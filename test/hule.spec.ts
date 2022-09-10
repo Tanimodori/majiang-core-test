@@ -585,7 +585,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 20,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 1500,
         fenpei: [-700, 1500, -400, -400],
       });
@@ -600,7 +600,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 20,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 3900,
         fenpei: [3900, -1300, -1300, -1300],
       });
@@ -615,7 +615,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 20,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 5200,
         fenpei: [-2600, 5200, -1300, -1300],
       });
@@ -630,7 +630,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '七対子', fanshu: 2 }],
         fu: 25,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 1600,
         fenpei: [-1900, 2900, 0, 0],
       });
@@ -648,7 +648,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 25,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 4800,
         fenpei: [6100, -1700, -1700, -1700],
       });
@@ -667,7 +667,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 25,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 6400,
         fenpei: [-3300, 7700, -1700, -1700],
       });
@@ -678,7 +678,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '断幺九', fanshu: 1 }],
         fu: 30,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 1500,
         fenpei: [1500, 0, -1500, 0],
       });
@@ -692,7 +692,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 30,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 2000,
         fenpei: [-2000, 2000, 0, 0],
       });
@@ -711,7 +711,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 30,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 6000,
         fenpei: [6000, -2000, -2000, -2000],
       });
@@ -726,7 +726,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 30,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 7900,
         fenpei: [-3900, 7900, -2000, -2000],
       });
@@ -737,7 +737,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '一盃口', fanshu: 1 }],
         fu: 40,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 2000,
         fenpei: [2000, 0, -2000, 0],
       });
@@ -751,7 +751,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 40,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 2600,
         fenpei: [-2600, 2600, 0, 0],
       });
@@ -769,7 +769,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 40,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 7800,
         fenpei: [7800, -2600, -2600, -2600],
       });
@@ -784,7 +784,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 40,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 8000,
         fenpei: [-4000, 8000, -2000, -2000],
       });
@@ -799,7 +799,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '場風 南', fanshu: 1 }],
         fu: 50,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 2400,
         fenpei: [2400, 0, -2400, 0],
       });
@@ -813,7 +813,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 50,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 3200,
         fenpei: [-3200, 3200, 0, 0],
       });
@@ -831,7 +831,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 50,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 9600,
         fenpei: [9600, -3200, -3200, -3200],
       });
@@ -846,7 +846,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 50,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 8000,
         fenpei: [-4000, 8000, -2000, -2000],
       });
@@ -861,7 +861,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '場風 南', fanshu: 1 }],
         fu: 60,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 2900,
         fenpei: [2900, 0, -2900, 0],
       });
@@ -875,7 +875,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 60,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 3900,
         fenpei: [-3900, 3900, 0, 0],
       });
@@ -893,7 +893,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 60,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 11700,
         fenpei: [11700, -3900, -3900, -3900],
       });
@@ -908,7 +908,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 60,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 8000,
         fenpei: [-4000, 8000, -2000, -2000],
       });
@@ -923,7 +923,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '場風 南', fanshu: 1 }],
         fu: 70,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 3400,
         fenpei: [3400, 0, -3400, 0],
       });
@@ -937,7 +937,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 70,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 4500,
         fenpei: [-4500, 4500, 0, 0],
       });
@@ -956,7 +956,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 70,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 12000,
         fenpei: [12000, -4000, -4000, -4000],
       });
@@ -971,7 +971,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '場風 南', fanshu: 1 }],
         fu: 80,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 3900,
         fenpei: [3900, 0, -3900, 0],
       });
@@ -985,7 +985,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 80,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 5200,
         fenpei: [-5200, 5200, 0, 0],
       });
@@ -1004,7 +1004,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 80,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 12000,
         fenpei: [12000, -4000, -4000, -4000],
       });
@@ -1019,7 +1019,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '場風 南', fanshu: 1 }],
         fu: 90,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 4400,
         fenpei: [4400, 0, -4400, 0],
       });
@@ -1033,7 +1033,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 90,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 5800,
         fenpei: [-5800, 5800, 0, 0],
       });
@@ -1052,7 +1052,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 90,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 12000,
         fenpei: [12000, -4000, -4000, -4000],
       });
@@ -1067,7 +1067,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '場風 南', fanshu: 1 }],
         fu: 100,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 4800,
         fenpei: [4800, 0, -4800, 0],
       });
@@ -1081,7 +1081,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 100,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 6400,
         fenpei: [-6400, 6400, 0, 0],
       });
@@ -1099,7 +1099,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 100,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 12000,
         fenpei: [12000, -4000, -4000, -4000],
       });
@@ -1110,7 +1110,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '翻牌 中', fanshu: 1 }],
         fu: 110,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 5300,
         fenpei: [5300, 0, -5300, 0],
       });
@@ -1124,7 +1124,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 110,
         fanshu: 2,
-        damanguan: null,
+        damanguan: undefined,
         defen: 7100,
         fenpei: [-7100, 7100, 0, 0],
       });
@@ -1142,7 +1142,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 110,
         fanshu: 3,
-        damanguan: null,
+        damanguan: undefined,
         defen: 12000,
         fenpei: [12000, -4000, -4000, -4000],
       });
@@ -1158,7 +1158,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 30,
         fanshu: 5,
-        damanguan: null,
+        damanguan: undefined,
         defen: 12000,
         fenpei: [12000, 0, -12000, 0],
       });
@@ -1175,7 +1175,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 20,
         fanshu: 6,
-        damanguan: null,
+        damanguan: undefined,
         defen: 12000,
         fenpei: [-6000, 12000, -3000, -3000],
       });
@@ -1195,7 +1195,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 50,
         fanshu: 7,
-        damanguan: null,
+        damanguan: undefined,
         defen: 18000,
         fenpei: [18000, 0, -18000, 0],
       });
@@ -1212,7 +1212,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 50,
         fanshu: 8,
-        damanguan: null,
+        damanguan: undefined,
         defen: 16000,
         fenpei: [-8000, 16000, -4000, -4000],
       });
@@ -1227,7 +1227,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 50,
         fanshu: 9,
-        damanguan: null,
+        damanguan: undefined,
         defen: 24000,
         fenpei: [24000, 0, -24000, 0],
       });
@@ -1243,7 +1243,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 40,
         fanshu: 10,
-        damanguan: null,
+        damanguan: undefined,
         defen: 16000,
         fenpei: [-8000, 16000, -4000, -4000],
       });
@@ -1259,7 +1259,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 30,
         fanshu: 11,
-        damanguan: null,
+        damanguan: undefined,
         defen: 36000,
         fenpei: [36000, 0, -36000, 0],
       });
@@ -1276,7 +1276,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 20,
         fanshu: 12,
-        damanguan: null,
+        damanguan: undefined,
         defen: 24000,
         fenpei: [-12000, 24000, -6000, -6000],
       });
@@ -1292,7 +1292,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 30,
         fanshu: 13,
-        damanguan: null,
+        damanguan: undefined,
         defen: 48000,
         fenpei: [48000, 0, -48000, 0],
       });
@@ -1419,7 +1419,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 40,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 8000,
         fenpei: [0, 8000, 0, -8000],
       });
@@ -1434,7 +1434,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 40,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 8000,
         fenpei: [0, 8000, 0, -8000],
       });
@@ -1448,7 +1448,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 40,
         fanshu: 4,
-        damanguan: null,
+        damanguan: undefined,
         defen: 8000,
         fenpei: [0, 8000, 0, -8000],
       });
@@ -1459,7 +1459,7 @@ suite('Majiang.Util', () => {
         hupai: [{ name: '翻牌 中', fanshu: 1 }],
         fu: 50,
         fanshu: 1,
-        damanguan: null,
+        damanguan: undefined,
         defen: 1600,
         fenpei: [0, 1600, 0, -1600],
       });
@@ -1474,7 +1474,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 30,
         fanshu: 5,
-        damanguan: null,
+        damanguan: undefined,
         defen: 8000,
         fenpei: [0, 8000, 0, -8000],
       });
@@ -1488,7 +1488,7 @@ suite('Majiang.Util', () => {
         ],
         fu: 50,
         fanshu: 8,
-        damanguan: null,
+        damanguan: undefined,
         defen: 16000,
         fenpei: [0, 16000, 0, -16000],
       });
@@ -1540,7 +1540,7 @@ suite('Majiang.Util', () => {
           hupai: [{ name: '断幺九', fanshu: 1 }],
           fu: 40,
           fanshu: 1,
-          damanguan: null,
+          damanguan: undefined,
           defen: 1300,
           fenpei: [0, 1300, 0, -1300],
         });
@@ -1696,7 +1696,7 @@ suite('Majiang.Util', () => {
           ],
           fu: 20,
           fanshu: 13,
-          damanguan: null,
+          damanguan: undefined,
           defen: 24000,
           fenpei: [-12000, 24000, -6000, -6000],
         });
@@ -1717,7 +1717,7 @@ suite('Majiang.Util', () => {
           ],
           fu: 30,
           fanshu: 3,
-          damanguan: null,
+          damanguan: undefined,
           defen: 6000,
           fenpei: [6000, -2000, -2000, -2000],
         });
@@ -1736,7 +1736,7 @@ suite('Majiang.Util', () => {
           ],
           fu: 30,
           fanshu: 4,
-          damanguan: null,
+          damanguan: undefined,
           defen: 8000,
           fenpei: [-4000, 8000, -2000, -2000],
         });
@@ -1754,7 +1754,7 @@ suite('Majiang.Util', () => {
           ],
           fu: 60,
           fanshu: 3,
-          damanguan: null,
+          damanguan: undefined,
           defen: 12000,
           fenpei: [12000, -4000, -4000, -4000],
         });
