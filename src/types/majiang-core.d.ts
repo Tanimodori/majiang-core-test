@@ -114,5 +114,41 @@ declare module '@kobalab/majiang-core' {
   /**
    * 模打情報
    */
-  export type Moda = unknown[];
+  export type Moda = Array<unknown>;
+
+  /**
+   * 配牌情報
+   */
+  export interface Peipai {
+    /**
+     * 場風。(``0``: 東、``1``: 南、``2``: 西、``3``: 北)
+     */
+    zhuangfeng: number;
+    /**
+     * 局数。(``0``: 一局、``1``: 二局、``2``: 三局、``3``: 四局)
+     */
+    jushu: number;
+    /**
+     * 本場。
+     */
+    changbang: number;
+    /**
+     * その局開始時の供託リーチ棒の数。
+     */
+    lizhibang: number;
+    /**
+     * その局開始時の対局者の持ち点。その局の東家から順に並べる。
+     */
+    defen: number[];
+    /**
+     * ドラ表示牌。
+     * @see Pai
+     */
+    baopai: Pai;
+    /**
+     * 配牌の [[牌姿]]。その局の東家から順に並べる。
+     * @see Paizi
+     */
+    shoupai: Paizi[];
+  }
 }
