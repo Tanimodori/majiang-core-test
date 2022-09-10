@@ -130,7 +130,17 @@ declare module '@kobalab/majiang-core' {
   /**
    * 模打情報
    */
-  export type Moda = Array<unknown>;
+  export type Moda = Array<
+    | Peipai // 配牌情報
+    | Zimo // 自摸情報
+    | Dapai // 打牌情報
+    | Fulou // 副露情報
+    | Gang // 槓情報
+    | Gangzimo // 槓自摸情報
+    | Kaigang // 開槓情報
+    | Hule // 和了情報
+    | Pingju // 流局情報
+  >;
 
   /**
    * 配牌情報
@@ -441,5 +451,38 @@ declare module '@kobalab/majiang-core' {
      * 役満のパオがあった場合の責任者
      */
     baojia?: number;
+  }
+
+  /**
+   * 流局情報
+   * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { pingju: {
+   *     name:       "荒牌平局",
+   *     shoupai:    [ "",
+   *                   "p2234406z333555",
+   *                   "",
+   *                   "p11223346777z77" ],
+   *     fenpai:     [ -1500, 1500, -1500, 1500 ]
+   * } }
+   */
+  export interface Pingju {
+    pingju: {
+      /**
+       * 流局理由。
+       */
+      name: string;
+      /**
+       * 流局時の手牌。その局の東家から順に並べる。ノーテンなどの理由により手牌を開示しなかった場合は空文字列とする。
+       * @see Paizi
+       */
+      shoupai: Paizi[];
+      /**
+       * ノーテン罰符などその局の点数の収支。その局の東家から順に並べる。リーチ宣言による1000点減は収支に含めない。
+       */
+      fenpai: number[];
+    };
   }
 }
