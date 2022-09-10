@@ -232,4 +232,92 @@ declare module '@kobalab/majiang-core' {
       p: Pai;
     };
   }
+
+  /**
+   * 副露情報
+   * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { fulou: { l: 0, m: "m567-" } }
+   * ```
+   */
+  export interface Fulou {
+    fulou: {
+      /**
+       * 手番。(``0``: 東家、``1``: 南家、``2``: 西家、``3``: 北家)
+       */
+      l: number;
+      /**
+       * 副露した面子。
+       * @see Menzi
+       */
+      m: Menzi;
+    };
+  }
+
+  /**
+   * 槓情報
+   * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { gang: { l: 1, m: "z222-2" } }
+   * ```
+   */
+  export interface Gang {
+    gang: {
+      /**
+       * 手番。(``0``: 東家、``1``: 南家、``2``: 西家、``3``: 北家)
+       */
+      l: number;
+      /**
+       * ツモった牌。
+       * @see Pai
+       */
+      p: Pai;
+    };
+  }
+
+  /**
+   * 槓自摸
+   * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { gangzimo: { l: 1, p: "m9" } }
+   * ```
+   */
+  export interface Gangzimo {
+    gangzimo: {
+      /**
+       * 手番。(``0``: 東家、``1``: 南家、``2``: 西家、``3``: 北家)
+       */
+      l: number;
+      /**
+       * 槓した面子。大明槓は副露として扱うので、ここでの槓は暗槓もしくは加槓。
+       * @see Menzi
+       */
+      m: Menzi;
+    };
+  }
+
+  /**
+   * 開槓
+   * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { kaigang: { baopai: "p7" } }
+   * ```
+   */
+  export interface Kaigang {
+    kaigang: {
+      /**
+       * 槓ドラ表示牌。
+       * @see Pai
+       */
+      baopai: Pai;
+    };
+  }
 }
