@@ -398,11 +398,48 @@ declare module '@kobalab/majiang-core' {
        * 和了役の配列。それぞれの要素には役名を示す ``name`` と翻数を示す ``fanshu`` がある。役満の場合 ``fanshu`` は数字ではなく、和了役それぞれの役満複合数分の ``*`` となる。また役満のパオがあった場合は ``baojia`` に責任者を設定する。
 役名は任意の文字列なので、ローカル役の採用も可能。
        */
-      hupai: unknown[];
+      hupai: Huleyi[];
       /**
        * 供託を含めたその局の点数の収支。その局の東家から順に並べる。リーチ宣言による1000点減は収支に含めない。
        */
       fenpai: number[];
     };
+  }
+
+  /** 和了役 */
+  export type Huleyi = Yibanyi | Yiman;
+
+  /**
+   * 一般役
+   */
+  export interface Yibanyi {
+    /**
+     * 役名
+     */
+    name: string;
+    /**
+     * 翻数
+     */
+    fanshu: number;
+  }
+
+  /**
+   * 役満
+   */
+  export interface Yiman {
+    /**
+     * 役名
+     * @description 役名は任意の文字列なので、ローカル役の採用も可能。
+     */
+    name: string;
+    /**
+     * 翻数
+     * @description 役満の場合は数字ではなく、和了役それぞれの役満複合数分の ``*`` となる
+     */
+    fanshu: string;
+    /**
+     * 役満のパオがあった場合の責任者
+     */
+    baojia?: number;
   }
 }
