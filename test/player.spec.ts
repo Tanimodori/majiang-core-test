@@ -1,6 +1,6 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const Majiang = require('../');
+import Majiang from '../';
 
 function init_player(param = {}) {
   const player = new Majiang.Player();
@@ -19,7 +19,7 @@ function init_player(param = {}) {
   if (param.rule) kaiju.rule = param.rule;
   if (param.jushu != null) qipai.jushu = param.jushu;
 
-  let menfeng = (kaiju.id + 4 - kaiju.qijia + 4 - qipai.jushu) % 4;
+  const menfeng = (kaiju.id + 4 - kaiju.qijia + 4 - qipai.jushu) % 4;
   qipai.shoupai[menfeng] = param.shoupai || 'm123p456s789z1234';
 
   player.kaiju(kaiju);
@@ -244,160 +244,160 @@ suite('Majiang.Player', () => {
   suite('get_dapai(shoupai)', () => {
     test('喰い替えなし', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m14p45677s6788,m234-,');
+      const shoupai = Majiang.Shoupai.fromString('m14p45677s6788,m234-,');
       assert.deepEqual(player.get_dapai(shoupai), ['p4', 'p5', 'p6', 'p7', 's6', 's7', 's8']);
     });
     test('喰い替えあり', () => {
       const player = init_player({ rule: Majiang.rule({ 喰い替え許可レベル: 1 }) });
-      let shoupai = Majiang.Shoupai.fromString('m14p45677s6788,m234-,');
+      const shoupai = Majiang.Shoupai.fromString('m14p45677s6788,m234-,');
       assert.deepEqual(player.get_dapai(shoupai), ['m1', 'p4', 'p5', 'p6', 'p7', 's6', 's7', 's8']);
     });
   });
   suite('get_chi_mianzi(shoupai, p)', () => {
     test('喰い替えなし', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('p1112344,z111=,z222+');
+      const shoupai = Majiang.Shoupai.fromString('p1112344,z111=,z222+');
       assert.deepEqual(player.get_chi_mianzi(shoupai, 'p4-'), []);
     });
     test('喰い替えあり', () => {
       const player = init_player({ rule: Majiang.rule({ 喰い替え許可レベル: 1 }) });
-      let shoupai = Majiang.Shoupai.fromString('p1112344,z111=,z222+');
+      const shoupai = Majiang.Shoupai.fromString('p1112344,z111=,z222+');
       assert.deepEqual(player.get_chi_mianzi(shoupai, 'p4-'), ['p234-']);
     });
     test('ハイテイ牌でチーできないこと', () => {
       const player = init_player();
       while (player.shan.paishu) player.shan.zimo();
-      let shoupai = Majiang.Shoupai.fromString('m23p456s789z11123');
+      const shoupai = Majiang.Shoupai.fromString('m23p456s789z11123');
       assert.deepEqual(player.get_chi_mianzi(shoupai, 'm1-'), []);
     });
   });
   suite('get_peng_mianzi(shoupai, p)', () => {
     test('ポンできるメンツを返すこと', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1123');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1123');
       assert.deepEqual(player.get_peng_mianzi(shoupai, 'z1+'), ['z111+']);
     });
     test('ハイテイ牌でポンできないこと', () => {
       const player = init_player();
       while (player.shan.paishu) player.shan.zimo();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1123');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1123');
       assert.deepEqual(player.get_peng_mianzi(shoupai, 'z1+'), []);
     });
   });
   suite('get_gang_mianzi(shoupai, p)', () => {
     test('暗槓できるメンツを返すこと', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
       assert.deepEqual(player.get_gang_mianzi(shoupai), ['z1111']);
     });
     test('大明槓できるメンツを返すこと', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1112');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1112');
       assert.deepEqual(player.get_gang_mianzi(shoupai, 'z1='), ['z1111=']);
     });
     test('ハイテイ牌でカンできないこと', () => {
       const player = init_player();
       while (player.shan.paishu) player.shan.zimo();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
       assert.deepEqual(player.get_gang_mianzi(shoupai), []);
     });
     test('5つ目のカンはできないこと', () => {
       const player = init_player();
       player._n_gang = 4;
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
       assert.deepEqual(player.get_gang_mianzi(shoupai), []);
     });
     test('リーチ後の暗槓あり', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1112z1*');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1112z1*');
       assert.deepEqual(player.get_gang_mianzi(shoupai), ['z1111']);
     });
     test('リーチ後の暗槓なし', () => {
       const player = init_player({ rule: Majiang.rule({ リーチ後暗槓許可レベル: 0 }) });
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1112z1*');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1112z1*');
       assert.deepEqual(player.get_gang_mianzi(shoupai), []);
     });
   });
   suite('allow_lizhi(shoupai, p)', () => {
     test('リーチ可能な牌の一覧を返すこと', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
+      const shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
       assert.deepEqual(player.allow_lizhi(shoupai), ['m2', 'm3']);
     });
     test('リーチ可能か判定すること', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
+      const shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
       assert.ok(player.allow_lizhi(shoupai, 'm2'));
     });
     test('ツモ番なしリーチなし', () => {
       const player = init_player();
       while (player.shan.paishu >= 4) player.shan.zimo();
-      let shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
+      const shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
       assert.ok(!player.allow_lizhi(shoupai));
     });
     test('ツモ番なしリーチあり', () => {
       const player = init_player({ rule: Majiang.rule({ ツモ番なしリーチあり: true }) });
       while (player.shan.paishu >= 4) player.shan.zimo();
-      let shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
+      const shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
       assert.ok(player.allow_lizhi(shoupai));
     });
     test('トビ終了あり', () => {
       const player = init_player();
       player._model.defen[player._id] = 900;
-      let shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
+      const shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
       assert.ok(!player.allow_lizhi(shoupai));
     });
     test('トビ終了なし', () => {
       const player = init_player({ rule: Majiang.rule({ トビ終了あり: false }) });
       player._model.defen[player._id] = 900;
-      let shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
+      const shoupai = Majiang.Shoupai.fromString('m223p456s789z11122');
       assert.ok(player.allow_lizhi(shoupai));
     });
   });
   suite('allow_hule(shoupai, p)', () => {
     test('役なしの場合、偽を返すこと', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
       assert.ok(!player.allow_hule(shoupai, 'z2='));
     });
     test('状況役ありの場合(リーチ)、真を返すこと', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1122*');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1122*');
       assert.ok(player.allow_hule(shoupai, 'z2='));
     });
     test('状況役ありの場合(ハイテイ)、真を返すこと', () => {
       const player = init_player();
       while (player.shan.paishu) player.shan.zimo();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
       assert.ok(player.allow_hule(shoupai, 'z2='));
     });
     test('状況役ありの場合(槍槓)、真を返すこと', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
       assert.ok(player.allow_hule(shoupai, 'z2=', true));
     });
     test('フリテンの場合、偽を返すこと', () => {
       const player = init_player();
       player._neng_rong = false;
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
       assert.ok(!player.allow_hule(shoupai, 'z1='));
     });
   });
   suite('allow_pingju(shoupai)', () => {
     test('九種九牌で流せること', () => {
       const player = init_player();
-      let shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
       assert.ok(player.allow_pingju(shoupai));
     });
     test('最初のツモ巡をすぎた場合、流せないこと', () => {
       const player = init_player();
       player._diyizimo = false;
-      let shoupai = Majiang.Shoupai.fromString('m123459z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m123459z1234567');
       assert.ok(!player.allow_pingju(shoupai));
     });
     test('途中流局なしの場合、流せないこと', () => {
       const player = init_player({ rule: Majiang.rule({ 途中流局あり: false }) });
-      let shoupai = Majiang.Shoupai.fromString('m123459z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m123459z1234567');
       assert.ok(!player.allow_pingju(shoupai));
     });
   });

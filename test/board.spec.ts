@@ -1,6 +1,6 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const Majiang = require('../');
+import Majiang from '../';
 
 function init_board(param = {}) {
   const board = new Majiang.Board({
@@ -9,7 +9,7 @@ function init_board(param = {}) {
     qijia: 1,
   });
 
-  let qipai = {
+  const qipai = {
     zhuangfeng: 1,
     jushu: 2,
     changbang: 3,
@@ -73,7 +73,7 @@ suite('Majiang.Board', () => {
       player: ['私', '下家', '対面', '上家'],
       qijia: 1,
     });
-    let qipai = {
+    const qipai = {
       zhuangfeng: 1,
       jushu: 2,
       changbang: 3,

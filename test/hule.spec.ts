@@ -1,8 +1,8 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const Majiang = require('../');
+import Majiang from '../';
 
-const data = require('./data/hule.json');
+import data from './data/hule.json';
 
 const param = Majiang.Util.hule_param;
 
@@ -1510,7 +1510,7 @@ suite('Majiang.Util', () => {
     });
 
     test('和了点計算: 10000パターン', () => {
-      for (let t of data) {
+      for (const t of data) {
         t.in.param.rule = Majiang.rule();
         hule = Majiang.Util.hule(Majiang.Shoupai.fromString(t.in.shoupai), t.in.rongpai, t.in.param);
         assert.deepEqual(hule, t.out, t.in.shoupai);

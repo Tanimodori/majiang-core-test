@@ -1,6 +1,6 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const Majiang = require('../');
+import Majiang from '../';
 
 function Shan(rule) {
   return new Majiang.Shan(Majiang.rule(rule));
@@ -71,11 +71,11 @@ suite('Majiang.Shan', () => {
   suite('zimo()', () => {
     test('牌山生成直後にツモれること', () => assert.ok(Shan().zimo()));
     test('ツモ後に残牌数が減ること', () => {
-      let shan = Shan();
+      const shan = Shan();
       assert.equal(shan.paishu - 1, shan.zimo() && shan.paishu);
     });
     test('王牌はツモれないこと', () => {
-      let shan = Shan();
+      const shan = Shan();
       while (shan.paishu) {
         shan.zimo();
       }
@@ -87,19 +87,19 @@ suite('Majiang.Shan', () => {
   suite('gangzimo()', () => {
     test('牌山生成直後に槓ツモできること', () => assert.ok(Shan().gangzimo()));
     test('槓ツモ後に残牌数が減ること', () => {
-      let shan = Shan();
+      const shan = Shan();
       assert.equal(shan.paishu - 1, shan.gangzimo() && shan.paishu);
     });
     test('槓ツモ直後はツモれないこと', () => {
-      let shan = Shan();
+      const shan = Shan();
       assert.throws(() => shan.gangzimo() && shan.zimo());
     });
     test('槓ツモ直後に続けて槓ツモできないこと', () => {
-      let shan = Shan();
+      const shan = Shan();
       assert.throws(() => shan.gangzimo() && shan.gangzimo());
     });
     test('ハイテイで槓ツモできないこと', () => {
-      let shan = Shan();
+      const shan = Shan();
       while (shan.paishu) {
         shan.zimo();
       }
@@ -107,7 +107,7 @@ suite('Majiang.Shan', () => {
     });
     test('牌山固定後は槓ツモできないこと', () => assert.throws(() => Shan().close().gangzimo()));
     test('5つ目の槓ツモができないこと', () => {
-      let shan = Shan();
+      const shan = Shan();
       for (let i = 0; i < 4; i++) {
         shan.gangzimo();
         shan.kaigang();
@@ -115,7 +115,7 @@ suite('Majiang.Shan', () => {
       assert.throws(() => shan.gangzimo());
     });
     test('カンドラなしでも5つ目の槓ツモができないこと', () => {
-      let shan = Shan({ カンドラあり: false });
+      const shan = Shan({ カンドラあり: false });
       for (let i = 0; i < 4; i++) {
         shan.gangzimo();
       }
@@ -127,46 +127,46 @@ suite('Majiang.Shan', () => {
   suite('kaigang()', () => {
     test('牌山生成直後に開槓できないこと', () => assert.throws(() => Shan().kaigang()));
     test('槓ツモ後に開槓できること', () => {
-      let shan = Shan();
+      const shan = Shan();
       assert.ok(shan.gangzimo() && shan.kaigang());
     });
     test('開槓によりドラが増えること', () => {
-      let shan = Shan();
+      const shan = Shan();
       shan.gangzimo();
       assert.equal(shan.baopai.length + 1, shan.kaigang().baopai.length);
     });
     test('開槓により裏ドラが増えること', () => {
-      let shan = Shan();
+      const shan = Shan();
       shan.gangzimo();
       assert.equal(shan.kaigang().close().fubaopai.length, 2);
     });
     test('開槓後はツモできること', () => {
-      let shan = Shan();
+      const shan = Shan();
       shan.gangzimo();
       assert.ok(shan.kaigang().zimo());
     });
     test('開槓後は槓ツモできること', () => {
-      let shan = Shan();
+      const shan = Shan();
       shan.gangzimo();
       assert.ok(shan.kaigang().gangzimo());
     });
     test('牌山固定後は開槓できないこと', () => {
-      let shan = Shan();
+      const shan = Shan();
       shan.gangzimo();
       assert.throws(() => shan.close().kaigang());
     });
     test('カンドラなしの場合は開槓できないこと', () => {
-      let shan = Shan({ カンドラあり: false });
+      const shan = Shan({ カンドラあり: false });
       shan.gangzimo();
       assert.throws(() => shan.kaigang());
     });
     test('カン裏なしの場合は開槓で裏ドラが増えないこと', () => {
-      let shan = Shan({ カン裏あり: false });
+      const shan = Shan({ カン裏あり: false });
       shan.gangzimo();
       assert.equal(shan.kaigang().close().fubaopai.length, 1);
     });
     test('裏ドラなしの場合は開槓で裏ドラ発生しないこと', () => {
-      let shan = Shan({ 裏ドラあり: false });
+      const shan = Shan({ 裏ドラあり: false });
       shan.gangzimo();
       assert.ifError(shan.kaigang().close().fubaopai);
     });

@@ -1,9 +1,9 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const Majiang = require('../');
+import Majiang from '../';
 Majiang.Dev = { Game: require('../dev/game') };
 
-const script = require('./data/script.json');
+import script from './data/script.json';
 
 let MSG = [];
 
@@ -68,13 +68,13 @@ function init_game(param = {}) {
     }
   }
   if (param.zimo) {
-    let pai = game.model.shan._pai;
+    const pai = game.model.shan._pai;
     for (let i = 0; i < param.zimo.length; i++) {
       pai[pai.length - 1 - i] = param.zimo[i];
     }
   }
   if (param.gangzimo) {
-    let pai = game.model.shan._pai;
+    const pai = game.model.shan._pai;
     for (let i = 0; i < param.gangzimo.length; i++) {
       pai[i] = param.gangzimo[i];
     }
@@ -84,7 +84,7 @@ function init_game(param = {}) {
   }
   if (param.defen) {
     for (let l = 0; l < 4; l++) {
-      let id = game.model.player_id[l];
+      const id = game.model.player_id[l];
       game.model.defen[id] = param.defen[l];
     }
   }
@@ -94,13 +94,13 @@ function init_game(param = {}) {
 
 function set_reply(game, reply) {
   for (let l = 0; l < 4; l++) {
-    let id = game.model.player_id[l];
+    const id = game.model.player_id[l];
     game._players[id]._reply = [reply[l]];
   }
 }
 
 function last_paipu(game, i = 0) {
-  let log = game._paipu.log[game._paipu.log.length - 1];
+  const log = game._paipu.log[game._paipu.log.length - 1];
   return log[log.length - 1 + i];
 }
 
@@ -253,7 +253,7 @@ suite('Majiang.Game', () => {
   suite('notify_players(type, msg)', () => {
     const players = [0, 1, 2, 3].map((id) => new Player(id));
     const game = new Majiang.Game(players);
-    let msg = ['a', 'b', 'c', 'd'];
+    const msg = ['a', 'b', 'c', 'd'];
 
     test('通知が伝わること', (done) => {
       MSG = [];
@@ -270,8 +270,8 @@ suite('Majiang.Game', () => {
     const players = [0, 1, 2, 3].map((id) => new Player(id));
     const game = new Majiang.Game(players);
     game.speed = 1;
-    let type = 'test';
-    let msg = ['a', 'b', 'c', 'd'];
+    const type = 'test';
+    const msg = ['a', 'b', 'c', 'd'];
 
     test('通知が伝わること', (done) => {
       game.stop(() => {
@@ -288,7 +288,7 @@ suite('Majiang.Game', () => {
     });
     test('遅い player がいても応答を取得できること', (done) => {
       game.stop(done);
-      for (let player of players) {
+      for (const player of players) {
         player._delay = 100;
       }
       game.call_players(type, msg, 0);
@@ -318,7 +318,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { kaiju: null }));
     test('通知が伝わること', () => {
       for (let id = 0; id < 4; id++) {
-        let msg = {
+        const msg = {
           kaiju: {
             id: id,
             rule: game._rule,
@@ -368,7 +368,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { redraw: null }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].qipai.defen[l], 25000);
         assert.ok(MSG[id].qipai.shoupai[l]);
       }
@@ -401,7 +401,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].zimo.l, game.model.lunban);
         if (l == game.model.lunban) assert.ok(MSG[id].zimo.p);
         else assert.ok(!MSG[id].zimo.p);
@@ -424,7 +424,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].dapai.l, game.model.lunban);
         assert.equal(MSG[id].dapai.p, dapai);
       }
@@ -500,7 +500,7 @@ suite('Majiang.Game', () => {
       const game = init_game({ shoupai: ['_____________*', '', '', ''] });
       game._neng_rong[0] = false;
       game.zimo();
-      let dapai = game.model.shoupai[0]._zimo;
+      const dapai = game.model.shoupai[0]._zimo;
       game.dapai(dapai);
       assert.ok(!game._neng_rong[game.model.lunban]);
     });
@@ -529,7 +529,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].fulou.l, game.model.lunban);
         assert.equal(MSG[id].fulou.m, 'm12-3');
       }
@@ -570,7 +570,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].gang.l, game.model.lunban);
         assert.equal(MSG[id].gang.m, 's555+0');
       }
@@ -606,7 +606,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game, -1) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].gangzimo.l, game.model.lunban);
         if (l == game.model.lunban) assert.ok(MSG[id].gangzimo.p);
         else assert.ok(!MSG[id].gangzimo.p);
@@ -679,7 +679,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].kaigang.baopai, game.model.shan.baopai.pop());
       }
     });
@@ -708,7 +708,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].hule.l, 2);
       }
     });
@@ -873,7 +873,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.deepEqual(game._view._param, { update: last_paipu(game) }));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.equal(MSG[id].pingju.name, '九種九牌');
       }
     });
@@ -1212,7 +1212,7 @@ suite('Majiang.Game', () => {
     test('表示処理が呼び出されること', () => assert.ok(game._view._param.summary));
     test('通知が伝わること', () => {
       for (let l = 0; l < 4; l++) {
-        let id = game.model.player_id[l];
+        const id = game.model.player_id[l];
         assert.ok(MSG[id].jieju);
       }
     });
@@ -1485,7 +1485,7 @@ suite('Majiang.Game', () => {
         qijia: 0,
         zimo: ['p4', 's1', 'm7', 's6'],
       });
-      for (let p of ['s6*', 'm7*', 'p6*', 'p4*']) {
+      for (const p of ['s6*', 'm7*', 'p6*', 'p4*']) {
         game.zimo();
         game.dapai(p);
       }
@@ -1505,7 +1505,7 @@ suite('Majiang.Game', () => {
         qijia: 0,
         zimo: ['p4', 's1', 'm7', 's6'],
       });
-      for (let p of ['s6*', 'm7*', 'p6*', 'p4*']) {
+      for (const p of ['s6*', 'm7*', 'p6*', 'p4*']) {
         game.zimo();
         game.dapai(p);
       }
@@ -1866,7 +1866,7 @@ suite('Majiang.Game', () => {
         defen: [25000, 25000, 25000, 24000],
         zimo: ['m2', 'm3', 'm4', 'm5'],
       });
-      for (let p of ['m2', 'm3', 'm4', 'm5']) {
+      for (const p of ['m2', 'm3', 'm4', 'm5']) {
         game.zimo();
         game.dapai(p);
       }
@@ -2178,7 +2178,7 @@ suite('Majiang.Game', () => {
   });
 
   suite('static get_dapai(rule, shoupai)', () => {
-    let shoupai = Majiang.Shoupai.fromString('m5678p567,z111=,s789-').fulou('m0-67');
+    const shoupai = Majiang.Shoupai.fromString('m5678p567,z111=,s789-').fulou('m0-67');
     test('喰い替えなし', () =>
       assert.deepEqual(Majiang.Game.get_dapai(Majiang.rule({ 喰い替え許可レベル: 0 }), shoupai), ['p5', 'p6', 'p7']));
     test('現物以外の喰い替えあり', () =>
@@ -2199,8 +2199,8 @@ suite('Majiang.Game', () => {
   });
 
   suite('static get_chi_mianzi(rule, shoupai, p, paishu)', () => {
-    let shoupai1 = Majiang.Shoupai.fromString('m1234,p456-,z111=,s789-');
-    let shoupai2 = Majiang.Shoupai.fromString('m1123,p456-,z111=,s789-');
+    const shoupai1 = Majiang.Shoupai.fromString('m1234,p456-,z111=,s789-');
+    const shoupai2 = Majiang.Shoupai.fromString('m1123,p456-,z111=,s789-');
 
     test('喰い替えなし', () => {
       const rule = Majiang.rule({ 喰い替え許可レベル: 0 });
@@ -2228,7 +2228,7 @@ suite('Majiang.Game', () => {
   });
 
   suite('static get_peng_mianzi(rule, shoupai, p, paishu)', () => {
-    let shoupai = Majiang.Shoupai.fromString('m1112,p456-,z111=,s789-');
+    const shoupai = Majiang.Shoupai.fromString('m1112,p456-,z111=,s789-');
 
     test('喰い替えのためにポンできないケースはない', () =>
       assert.deepEqual(Majiang.Game.get_peng_mianzi(Majiang.rule({ 喰い替え許可レベル: 0 }), shoupai, 'm1+', 1), [
@@ -2244,11 +2244,11 @@ suite('Majiang.Game', () => {
   });
 
   suite('static get_gang_mianzi(rule, shoupai, p, paishu)', () => {
-    let shoupai1 = Majiang.Shoupai.fromString('m1112p456s789z111z1*');
-    let shoupai2 = Majiang.Shoupai.fromString('m1112p456s789z111m1*');
-    let shoupai3 = Majiang.Shoupai.fromString('m23p567s33345666s3*');
-    let shoupai4 = Majiang.Shoupai.fromString('s1113445678999s1*');
-    let shoupai5 = Majiang.Shoupai.fromString('m23s77789s7*,s5550,z6666');
+    const shoupai1 = Majiang.Shoupai.fromString('m1112p456s789z111z1*');
+    const shoupai2 = Majiang.Shoupai.fromString('m1112p456s789z111m1*');
+    const shoupai3 = Majiang.Shoupai.fromString('m23p567s33345666s3*');
+    const shoupai4 = Majiang.Shoupai.fromString('s1113445678999s1*');
+    const shoupai5 = Majiang.Shoupai.fromString('m23s77789s7*,s5550,z6666');
 
     test('リーチ後の暗槓なし', () => {
       const rule = Majiang.rule({ リーチ後暗槓許可レベル: 0 });
@@ -2291,47 +2291,47 @@ suite('Majiang.Game', () => {
     const rule = Majiang.rule();
 
     test('打牌できない場合、リーチはできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z1122');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai));
     });
     test('すでにリーチしている場合、リーチはできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11223*');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11223*');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai));
     });
     test('メンゼンでない場合、リーチはできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z23,z111=');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z23,z111=');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai));
     });
     test('ツモ番がない場合、リーチはできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai, 'z3', 3));
     });
     test('ルールが許せばツモ番がなくてもリーチは可能', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
       assert.ok(Majiang.Game.allow_lizhi(Majiang.rule({ ツモ番なしリーチあり: true }), shoupai, 'z3', 3));
     });
     test('持ち点が1000点に満たない場合、リーチはできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai, 'z3', 4, 900));
     });
     test('トビなしなら持ち点が1000点に満たなくてもリーチは可能', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11223');
       assert.ok(Majiang.Game.allow_lizhi(Majiang.rule({ トビ終了あり: false }), shoupai, 'z3', 4, 900));
     });
     test('テンパイしていない場合、リーチはできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11234');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11234');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai));
     });
     test('形式テンパイと認められない牌姿でリーチはできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai, 'z2'));
     });
     test('指定された打牌でリーチ可能な場合、真を返すこと', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
       assert.ok(Majiang.Game.allow_lizhi(rule, shoupai, 'z1'));
     });
     test('指定された打牌でリーチできない場合、偽を返すこと', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z11112');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai, 'z2'));
     });
     test('打牌が指定されていない場合、リーチ可能な打牌一覧を返す', () => {
@@ -2341,7 +2341,7 @@ suite('Majiang.Game', () => {
       assert.deepEqual(Majiang.Game.allow_lizhi(rule, shoupai), ['z3_']);
     });
     test('リーチ可能な打牌がない場合、false を返す', () => {
-      let shoupai = Majiang.Shoupai.fromString('m11112344449999');
+      const shoupai = Majiang.Shoupai.fromString('m11112344449999');
       assert.ok(!Majiang.Game.allow_lizhi(rule, shoupai));
     });
   });
@@ -2350,31 +2350,31 @@ suite('Majiang.Game', () => {
     const rule = Majiang.rule();
 
     test('フリテンの場合、ロン和了できない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456z1122,s789-');
+      const shoupai = Majiang.Shoupai.fromString('m123p456z1122,s789-');
       assert.ok(!Majiang.Game.allow_hule(rule, shoupai, 'z1=', 0, 1, false, false));
     });
     test('和了形になっていない場合、和了できない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456z11223,s789-');
+      const shoupai = Majiang.Shoupai.fromString('m123p456z11223,s789-');
       assert.ok(!Majiang.Game.allow_hule(rule, shoupai, null, 0, 1, false, true));
     });
     test('役あり和了形の場合、和了できる', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z3377');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z3377');
       assert.ok(Majiang.Game.allow_hule(rule, shoupai, 'z3+', 0, 1, true, true));
     });
     test('役なし和了形の場合、和了できない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z3377');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z3377');
       assert.ok(!Majiang.Game.allow_hule(rule, shoupai, 'z3+', 0, 1, false, true));
     });
     test('クイタンなしの場合、クイタンでは和了できない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m22555p234s78,p777-');
+      const shoupai = Majiang.Shoupai.fromString('m22555p234s78,p777-');
       assert.ok(!Majiang.Game.allow_hule(Majiang.rule({ クイタンあり: false }), shoupai, 's6=', 0, 1, false, true));
     });
     test('ツモ和了', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456s789z33377');
+      const shoupai = Majiang.Shoupai.fromString('m123p456s789z33377');
       assert.ok(Majiang.Game.allow_hule(rule, shoupai, null, 0, 1, false, false));
     });
     test('ロン和了', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123p456z1122,s789-');
+      const shoupai = Majiang.Shoupai.fromString('m123p456z1122,s789-');
       assert.ok(Majiang.Game.allow_hule(rule, shoupai, 'z1=', 0, 1, false, true));
     });
   });
@@ -2383,29 +2383,29 @@ suite('Majiang.Game', () => {
     const rule = Majiang.rule();
 
     test('第一巡でない場合、九種九牌とならない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
       assert.ok(!Majiang.Game.allow_pingju(rule, shoupai, false));
     });
     test('ツモ後でない場合、九種九牌とならない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123459z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m123459z1234567');
       assert.ok(!Majiang.Game.allow_pingju(rule, shoupai, true));
     });
     test('途中流局なし場合、九種九牌とならない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
       assert.ok(!Majiang.Game.allow_pingju(Majiang.rule({ 途中流局あり: false }), shoupai, true));
     });
     test('八種九牌は流局にできない', () => {
-      let shoupai = Majiang.Shoupai.fromString('m1234567z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m1234567z1234567');
       assert.ok(!Majiang.Game.allow_pingju(rule, shoupai, true));
     });
     test('九種九牌', () => {
-      let shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
+      const shoupai = Majiang.Shoupai.fromString('m1234569z1234567');
       assert.ok(Majiang.Game.allow_pingju(rule, shoupai, true));
     });
   });
 
   suite('シナリオ通りに局が進むこと', () => {
-    for (let paipu of script) {
+    for (const paipu of script) {
       test(paipu.title, () => {
         const game = new Majiang.Dev.Game(
           JSON.parse(JSON.stringify(paipu)),

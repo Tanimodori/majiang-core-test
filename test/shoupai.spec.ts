@@ -1,6 +1,6 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const Majiang = require('../');
+import Majiang from '../';
 
 function Shoupai(paistr) {
   return Majiang.Shoupai.fromString(paistr);

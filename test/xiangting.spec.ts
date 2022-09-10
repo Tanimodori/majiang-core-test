@@ -1,11 +1,11 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const Majiang = require('../');
+import Majiang from '../';
 
-const data1 = require('./data/xiangting_1.json');
-const data2 = require('./data/xiangting_2.json');
-const data3 = require('./data/xiangting_3.json');
-const data4 = require('./data/xiangting_4.json');
+import data1 from './data/xiangting_1.json';
+import data2 from './data/xiangting_2.json';
+import data3 from './data/xiangting_3.json';
+import data4 from './data/xiangting_4.json';
 
 suite('Majiang.Util', () => {
   suite('xiangting_yiban(shoupai)', () => {
@@ -23,7 +23,7 @@ suite('Majiang.Util', () => {
     test('搭子不足', () =>
       assert.equal(Majiang.Util.xiangting_yiban(Majiang.Shoupai.fromString('m133345568z23677')), 2));
     test('多牌: 5面子', () => {
-      let shoupai = Majiang.Shoupai.fromString('m123,p123-,s456-,m789-');
+      const shoupai = Majiang.Shoupai.fromString('m123,p123-,s456-,m789-');
       shoupai._fulou.push('z555=');
       assert.equal(Majiang.Util.xiangting_yiban(shoupai), 0);
     });
@@ -41,25 +41,25 @@ suite('Majiang.Util', () => {
       assert.equal(Majiang.Util.xiangting_yiban(Majiang.Shoupai.fromString('m11122,p123-,s12-3,z111=,')), 0));
 
     test('一般手: 10000パターン', () => {
-      for (let data of data1) {
+      for (const data of data1) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_yiban(shoupai), data.x[0], shoupai);
       }
     });
     test('混一手: 10000パターン', () => {
-      for (let data of data2) {
+      for (const data of data2) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_yiban(shoupai), data.x[0], shoupai);
       }
     });
     test('清一手: 10000パターン', () => {
-      for (let data of data3) {
+      for (const data of data3) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_yiban(shoupai), data.x[0], shoupai);
       }
     });
     test('国士手: 10000パターン', () => {
-      for (let data of data4) {
+      for (const data of data4) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_yiban(shoupai), data.x[0], shoupai);
       }
@@ -90,25 +90,25 @@ suite('Majiang.Util', () => {
     test('少牌', () => assert.equal(Majiang.Util.xiangting_guoshi(Majiang.Shoupai.fromString('m119p19s19z12345')), 1));
 
     test('一般手: 10000パターン', () => {
-      for (let data of data1) {
+      for (const data of data1) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_guoshi(shoupai), data.x[1], shoupai);
       }
     });
     test('混一手: 10000パターン', () => {
-      for (let data of data2) {
+      for (const data of data2) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_guoshi(shoupai), data.x[1], shoupai);
       }
     });
     test('清一手: 10000パターン', () => {
-      for (let data of data3) {
+      for (const data of data3) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_guoshi(shoupai), data.x[1], shoupai);
       }
     });
     test('国士手: 10000パターン', () => {
-      for (let data of data4) {
+      for (const data of data4) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_guoshi(shoupai), data.x[1], shoupai);
       }
@@ -141,25 +141,25 @@ suite('Majiang.Util', () => {
     test('少牌', () => assert.equal(Majiang.Util.xiangting_qidui(Majiang.Shoupai.fromString('m1188s05z1122')), 3));
 
     test('一般手: 10000パターン', () => {
-      for (let data of data1) {
+      for (const data of data1) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_qidui(shoupai), data.x[2], shoupai);
       }
     });
     test('混一手: 10000パターン', () => {
-      for (let data of data2) {
+      for (const data of data2) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_qidui(shoupai), data.x[2], shoupai);
       }
     });
     test('清一手: 10000パターン', () => {
-      for (let data of data3) {
+      for (const data of data3) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_qidui(shoupai), data.x[2], shoupai);
       }
     });
     test('国士手: 10000パターン', () => {
-      for (let data of data4) {
+      for (const data of data4) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting_qidui(shoupai), data.x[2], shoupai);
       }
@@ -174,25 +174,25 @@ suite('Majiang.Util', () => {
       assert.equal(Majiang.Util.xiangting(Majiang.Shoupai.fromString('m1188p288s05z1177')), 0));
 
     test('一般手: 10000パターン', () => {
-      for (let data of data1) {
+      for (const data of data1) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting(shoupai), Math.min(...data.x), shoupai);
       }
     });
     test('混一手: 10000パターン', () => {
-      for (let data of data2) {
+      for (const data of data2) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting(shoupai), Math.min(...data.x), shoupai);
       }
     });
     test('清一手: 10000パターン', () => {
-      for (let data of data3) {
+      for (const data of data3) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting(shoupai), Math.min(...data.x), shoupai);
       }
     });
     test('国士手: 10000パターン', () => {
-      for (let data of data4) {
+      for (const data of data4) {
         const shoupai = new Majiang.Shoupai(data.q);
         assert.equal(Majiang.Util.xiangting(shoupai), Math.min(...data.x), shoupai);
       }
