@@ -1,4 +1,4 @@
-import assert from 'assert';
+import { suite, test, assert } from 'vitest';
 
 import Majiang from '@kobalab/majiang-core';
 Majiang.Dev = { Game: require('../dev/game') };
