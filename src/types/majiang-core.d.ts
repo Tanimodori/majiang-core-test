@@ -71,6 +71,22 @@ declare module '@kobalab/majiang-core' {
    *
    * 東南戦、東風戦、一局戦を問わず順位が確定する単位で模打を記録する。
    * リーグ戦などのシリーズ対局も1戦ごとの牌譜を配列に収めることで表現できるが、その形式については規定しない。
+   *
+   * @example
+   * ```JavaScript
+   * {
+   *     title:  "第十期 天鳳名人戦\n第一節 1卓(1)",
+   *     player: [ "（≧▽≦）\n(天鳳位 R2242)",
+   *               "Ⓟ木原浩一\n(新人 R1500)",
+   *               "太くないお\n(天鳳位 R2224)",
+   *               "Ⓟ小林剛\n(新人 R1500)" ],
+   *     qijia:  0,
+   *     log:    [], // 対局情報
+   *     defen:  [ 9100, 23100, 36400, 51400 ],
+   *     rank:   [ 4, 3, 2, 1 ],
+   *     point:  [ "-90.9", "-6.9", "26.4", "71.4" ]
+   * }
+   * ```
    */
   export interface Paipu {
     /**
@@ -119,6 +135,22 @@ declare module '@kobalab/majiang-core' {
   /**
    * 配牌情報
    * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { qipai: {
+   *     zhuangfeng: 0,
+   *     jushu:      0,
+   *     changbang:  0,
+   *     lizhibang:  0,
+   *     defen:      [ 30000, 30000, 30000, 30000 ],
+   *     baopai:     "s5",
+   *     shoupai:    [ "m478p33089s6z1257",
+   *                   "m19p1389s1299z255",
+   *                   "m67p68s1346789z17",
+   *                   "m14689p377s07z346"  ]
+   * } }
+   * ```
    */
   export interface Peipai {
     qipai: {
@@ -158,6 +190,11 @@ declare module '@kobalab/majiang-core' {
   /**
    * 自摸情報
    * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { zimo: { l: 0, p: "m4" } }
+   * ```
    */
   export interface Zimo {
     zimo: {
@@ -176,6 +213,11 @@ declare module '@kobalab/majiang-core' {
   /**
    * 打牌情報
    * @see Moda
+   *
+   * @example
+   * ```JavaScript
+   * { dapai: { l: 1, p: "z2*" } }
+   * ```
    */
   export interface Dapai {
     dapai: {
