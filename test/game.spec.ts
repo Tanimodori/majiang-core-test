@@ -1,7 +1,9 @@
 import { suite, test, assert } from 'vitest';
 
 import Majiang from '@kobalab/majiang-core';
-Majiang.Dev = { Game: require('../dev/game') };
+
+import Game from './dev/game';
+Majiang.Dev = { Game };
 
 import script from './data/script.json';
 
