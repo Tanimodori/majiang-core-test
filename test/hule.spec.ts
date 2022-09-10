@@ -1304,7 +1304,7 @@ suite('Majiang.Util', () => {
           { name: '大四喜', fanshu: '**' },
           { name: '字一色', fanshu: '*' },
         ],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 3,
         defen: 96000,
@@ -1319,7 +1319,7 @@ suite('Majiang.Util', () => {
       );
       assert.deepEqual(hule, {
         hupai: [{ name: '大三元', fanshu: '*', baojia: '-' }],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 1,
         defen: 48000,
@@ -1334,7 +1334,7 @@ suite('Majiang.Util', () => {
       );
       assert.deepEqual(hule, {
         hupai: [{ name: '大三元', fanshu: '*', baojia: '-' }],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 1,
         defen: 48000,
@@ -1349,7 +1349,7 @@ suite('Majiang.Util', () => {
       );
       assert.deepEqual(hule, {
         hupai: [{ name: '大三元', fanshu: '*', baojia: '-' }],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 1,
         defen: 48000,
@@ -1367,7 +1367,7 @@ suite('Majiang.Util', () => {
           { name: '大四喜', fanshu: '**', baojia: '+' },
           { name: '字一色', fanshu: '*' },
         ],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 3,
         defen: 96000,
@@ -1385,7 +1385,7 @@ suite('Majiang.Util', () => {
           { name: '大四喜', fanshu: '**', baojia: '+' },
           { name: '字一色', fanshu: '*' },
         ],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 3,
         defen: 96000,
@@ -1403,7 +1403,7 @@ suite('Majiang.Util', () => {
           { name: '大四喜', fanshu: '**', baojia: '+' },
           { name: '字一色', fanshu: '*' },
         ],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 3,
         defen: 96000,
@@ -1501,7 +1501,7 @@ suite('Majiang.Util', () => {
       );
       assert.deepEqual(hule, {
         hupai: [{ name: '九蓮宝燈', fanshu: '*' }],
-        fu: null,
+        fu: undefined,
         fanshu: undefined,
         damanguan: 1,
         defen: 32000,
@@ -1555,7 +1555,7 @@ suite('Majiang.Util', () => {
         );
         assert.deepEqual(hule, {
           hupai: [{ name: '国士無双十三面', fanshu: '*' }],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 1,
           defen: 32000,
@@ -1570,7 +1570,7 @@ suite('Majiang.Util', () => {
         );
         assert.deepEqual(hule, {
           hupai: [{ name: '四暗刻単騎', fanshu: '*' }],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 1,
           defen: 32000,
@@ -1585,7 +1585,7 @@ suite('Majiang.Util', () => {
         );
         assert.deepEqual(hule, {
           hupai: [{ name: '大四喜', fanshu: '*' }],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 1,
           defen: 32000,
@@ -1600,7 +1600,7 @@ suite('Majiang.Util', () => {
         );
         assert.deepEqual(hule, {
           hupai: [{ name: '純正九蓮宝燈', fanshu: '*' }],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 1,
           defen: 32000,
@@ -1620,7 +1620,7 @@ suite('Majiang.Util', () => {
             { name: '大四喜', fanshu: '**', baojia: '+' },
             { name: '字一色', fanshu: '*' },
           ],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 1,
           defen: 32000,
@@ -1638,7 +1638,7 @@ suite('Majiang.Util', () => {
             { name: '大四喜', fanshu: '**', baojia: '+' },
             { name: '字一色', fanshu: '*' },
           ],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 1,
           defen: 32000,
@@ -1655,7 +1655,7 @@ suite('Majiang.Util', () => {
         );
         assert.deepEqual(hule, {
           hupai: [{ name: '大三元', fanshu: '*' }],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 1,
           defen: 32000,
@@ -1670,7 +1670,7 @@ suite('Majiang.Util', () => {
         );
         assert.deepEqual(hule, {
           hupai: [{ name: '大四喜', fanshu: '**' }],
-          fu: null,
+          fu: undefined,
           fanshu: undefined,
           damanguan: 2,
           defen: 64000,
