@@ -1,0 +1,23 @@
+{
+  "name": "majiang-core-test",
+  "version": "0.0.0",
+  "description": "Testing majiang-core",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanimodori/majiang-core-test.git"
+  },
+  "keywords": [
+    "majiang",
+    "test"
+  ],
+  "author": "Tanimodori",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tanimodori/majiang-core-test/issues"
+  },
+  "homepage": "https://github.com/Tanimodori/majiang-core-test#readme"
+}
