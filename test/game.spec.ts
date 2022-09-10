@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import Majiang from '../';
+import Majiang from '@kobalab/majiang-core';
 Majiang.Dev = { Game: require('../dev/game') };
 
 import script from './data/script.json';

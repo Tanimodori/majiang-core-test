@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import Majiang from '../';
+import Majiang from '@kobalab/majiang-core';
 
 import data from './data/hule.json';
 

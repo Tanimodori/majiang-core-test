@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import Majiang from '../';
+import Majiang from '@kobalab/majiang-core';
 
 function Shoupai(paistr) {
   return Majiang.Shoupai.fromString(paistr);

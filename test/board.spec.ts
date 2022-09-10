@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import Majiang from '../';
+import Majiang from '@kobalab/majiang-core';
 
 function init_board(param = {}) {
   const board = new Majiang.Board({

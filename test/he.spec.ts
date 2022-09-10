@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import Majiang from '../';
+import Majiang from '@kobalab/majiang-core';
 
 suite('Majiang.He', () => {
   test('クラスが存在すること', () => assert.ok(Majiang.He));

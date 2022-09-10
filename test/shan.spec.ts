@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import Majiang from '../';
+import Majiang from '@kobalab/majiang-core';
 
 function Shan(rule) {
   return new Majiang.Shan(Majiang.rule(rule));

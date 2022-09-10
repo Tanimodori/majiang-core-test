@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import Majiang from '../';
+import Majiang from '@kobalab/majiang-core';
 
 import data1 from './data/xiangting_1.json';
 import data2 from './data/xiangting_2.json';
