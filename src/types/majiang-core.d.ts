@@ -280,7 +280,7 @@ declare module '@kobalab/majiang-core' {
   }
 
   /**
-   * 槓自摸
+   * 槓自摸情報
    * @see Moda
    *
    * @example
@@ -303,7 +303,7 @@ declare module '@kobalab/majiang-core' {
   }
 
   /**
-   * 開槓
+   * 開槓情報
    * @see Moda
    *
    * @example
@@ -318,6 +318,91 @@ declare module '@kobalab/majiang-core' {
        * @see Pai
        */
       baopai: Pai;
+    };
+  }
+
+  /**
+   * 和了情報
+   * @see Moda
+   * @example
+   * ```JavaScript
+   * { hule: {
+   *     l:          1,
+   *     shoupai:    "m234p35s123789z33p4*",
+   *     baojia:     null,
+   *     fubaopai:   [ "s9" ],
+   *     fu:         40,
+   *     fanshu:     3,
+   *     defen:      5200,
+   *     hupai:      [ { name: "立直", fanshu: 1 },
+   *                   { name: "門前清自模和", fanshu: 1 },
+   *                   { name: "裏ドラ", fanshu: 1 } ],
+   *     fenpai:     [ -2000, 4000, -1000, -1000 ]
+   * } }
+   * ```
+   *
+   * 以下は役満の場合。
+   * @example
+   * ```JavaScript
+   * { hule: {
+   *     l:          2,
+   *     shoupai:    "p7p7,z111-,z222=,z333+,z444-",
+   *     baojia:     3,
+   *     fubaopai:   null,
+   *     damanguan:  2,
+   *     defen:      64000,
+   *     hupai:      [ { name: "大四喜", fanshu: "**", baojia: 0 } ],
+   *     fenpai:     [ -32000, 0, 64000, -32000 ]
+   * } }
+   * ```
+   *
+   * ダブロンがあった場合はこの要素が連続する。
+   */
+  export interface Hule {
+    hule: {
+      /**
+       * 和了者。(``0``: 東家、``1``: 南家、``2``: 西家、``3``: 北家)
+       */
+      l: number;
+      /**
+       * 和了者の牌姿。ロン和了の場合は和了牌をツモした牌姿にする。
+       * @see Paizi
+       */
+      shoupai: Paizi;
+      /**
+       * 放銃者。ツモ和了の場合は ``null``。
+       */
+      baojia: number | null;
+      /**
+       * 裏ドラ表示牌の配列。リーチでない場合は ``null``。
+       * @see Pai
+       */
+      fubaopai: Pai[];
+      /**
+       * 符。役満の場合は ``undefined``。
+       */
+      fu?: number;
+      /**
+       * 翻数。役満の場合は ``undefined``。
+       */
+      fanshu?: number;
+      /**
+       * 役満複合数。複合には四暗刻をダブル役満にする類のものと、大三元と字一色の複合のような役の複合のケースがある。役満でない場合は ``undefined``。
+       */
+      damanguan?: number;
+      /**
+       * 和了打点。供託収入は含まない。
+       */
+      defen: number;
+      /**
+       * 和了役の配列。それぞれの要素には役名を示す ``name`` と翻数を示す ``fanshu`` がある。役満の場合 ``fanshu`` は数字ではなく、和了役それぞれの役満複合数分の ``*`` となる。また役満のパオがあった場合は ``baojia`` に責任者を設定する。
+役名は任意の文字列なので、ローカル役の採用も可能。
+       */
+      hupai: unknown[];
+      /**
+       * 供託を含めたその局の点数の収支。その局の東家から順に並べる。リーチ宣言による1000点減は収支に含めない。
+       */
+      fenpai: number[];
     };
   }
 }
