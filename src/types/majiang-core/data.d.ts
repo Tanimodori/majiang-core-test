@@ -71,7 +71,7 @@ declare module '@kobalab/majiang-core' {
    * リーグ戦などのシリーズ対局も1戦ごとの牌譜を配列に収めることで表現できるが、その形式については規定しない。
    *
    * @example
-   * ``JavaScript
+   * ```JavaScript
    * {
    *     title:  "第十期 天鳳名人戦\n第一節 1卓(1)",
    *     player: [ "（≧▽≦）\n(天鳳位 R2242)",
@@ -84,7 +84,7 @@ declare module '@kobalab/majiang-core' {
    *     rank:   [ 4, 3, 2, 1 ],
    *     point:  [ "-90.9", "-6.9", "26.4", "71.4" ]
    * }
-   * ``
+   * ```
    */
   interface Paipu {
     /**
