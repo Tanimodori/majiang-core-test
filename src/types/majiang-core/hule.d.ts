@@ -1,10 +1,15 @@
 declare module '@kobalab/majiang-core' {
   declare namespace Util {
     /**
-     * ``shoupai`` の和了点を計算し、和了情報とともに返す。
+     * **`shoupai`** の和了点を計算し、和了情報とともに返す。
      * @remarks
-     * ツモ和了の場合は ``shoupai`` はツモ牌を加えた状態で ``rongpai`` は null とする。
-     * ロン和了の場合は ``shoupai`` はロン牌を加えない状態で ``rongpai`` はロンした [[牌]] とする。``rongpai`` には誰がロンしたかを示す ``+``(下家から和了)/**=``(対面から和了)/**-``(上家から和了) のフラグを付加する。
+     * * ツモ和了の場合は **`shoupai`** はツモ牌を加えた状態で、 **`rongpai`** は `null` とする。
+     * * ロン和了の場合は **`shoupai`** はロン牌を加えない状態で、 **`rongpai`** はロンした{@link Pai | 牌}とする。
+     *
+     * ロン和了の場合、**`rongpai`** には誰がロンしたかを示す
+     * * `+`(下家から和了)
+     * * `=`(対面から和了)
+     * * `-`(上家から和了) のフラグを付加する。
      * @param shoupai 手牌
      * @param rongpai 牌
      * @param param 和了点計算に使用する場況情報
@@ -45,68 +50,68 @@ declare module '@kobalab/majiang-core' {
        */
       rule: Rule;
       /**
-       * 場風。(``0``: 東、``1``: 南、``2``: 西、``3``: 北)
-       * @defaultValue ``0``
+       * 場風。(`0`: 東、`1`: 南、`2`: 西、`3`: 北)
+       * @defaultValue `0`
        */
       zhuangfeng: number;
       /**
-       * 自風。(``0``: 東、``1``: 南、``2``: 西、``3``: 北)
-       * @defaultValue ``1``
+       * 自風。(`0`: 東、`1`: 南、`2`: 西、`3`: 北)
+       * @defaultValue `1`
        */
       menfeng: number;
       /** 状況役 */
       hupai: {
         /**
-         * ``0``: リーチなし、``1``: リーチ、``2``: ダブルリーチ。
-         * @defaultValue ``0``
+         * `0`: リーチなし、`1`: リーチ、`2`: ダブルリーチ。
+         * @defaultValue `0`
          */
         lizhi: number;
         /**
-         * 一発のとき ``true``。
-         * @defaultValue ``false``
+         * 一発のとき `true`。
+         * @defaultValue `false`
          */
         yifa: boolean;
         /**
-         * 槍槓のとき ``true``。
-         * @defaultValue ``false``
+         * 槍槓のとき `true`。
+         * @defaultValue `false`
          */
         qianggang: boolean;
         /**
-         *  嶺上開花のとき ``true``。
-         * @defaultValue ``false``
+         *  嶺上開花のとき `true`。
+         * @defaultValue `false`
          */
         lingshang: boolean;
         /**
-         * ``0``: ハイテイなし、``1``: ハイテイツモ、``2``: ハイテイロン。
-         * @defaultValue ``0``
+         * `0`: ハイテイなし、`1`: ハイテイツモ、`2`: ハイテイロン。
+         * @defaultValue `0`
          */
         haidi: number;
         /**
-         * ``0``: 天和/地和なし、``1``: 天和、``2``: 地和。
-         * @defaultValue ``0``
+         * `0`: 天和/地和なし、`1`: 天和、`2`: 地和。
+         * @defaultValue `0`
          */
         tianhu: number;
       };
       /**
        * ドラ表示牌の配列。
-       * @defaultValue ``[]``
+       * @defaultValue `[]`
        */
       baopai: Pai[];
       /**
-       * 裏ドラ表示牌の配列。リーチのない場合は ``null``。
-       * @defaultValue ``null``
+       * 裏ドラ表示牌の配列。リーチのない場合は `null`。
+       * @defaultValue `null`
        */
       fubaopai: Pai[] | null;
       /** 供託 */
       jicun: {
         /**
          * 積み棒の本数。
-         * @defaultValue ``0``
+         * @defaultValue `0`
          */
         changbang: number;
         /**
          * リーチ棒の本数。
-         * @defaultValue ``0``
+         * @defaultValue `0`
          */
         lizhibang: number;
       };
@@ -128,26 +133,27 @@ declare module '@kobalab/majiang-core' {
    *     defen:      5200,
    *     fenpei:     [ -2600, 6200, -1300, -1300 ]
    * }
+   * ```
    */
   interface HuleResult {
     /**
-     * 和了役の配列。それぞれの要素には役名を示す ``name`` と翻数を示す ``fanshu`` がある。
-     * 役満の場合 ``fanshu`` は数字ではなく、和了役それぞれの役満複合数分の ``*`` となる。
-     * また役満のパオがあった場合は ``baojia`` に責任者を設定する。
+     * 和了役の配列。それぞれの要素には役名を示す **`name`** と翻数を示す **`fanshu`** がある。
+     * 役満の場合 **`fanshu`** は数字ではなく、和了役それぞれの役満複合数分の `*` となる。
+     * また役満のパオがあった場合は **`baojia`** に責任者を設定する。
      */
     hupai: Huleyi[];
     /**
-     * 符。役満の場合は ``undefined``。
+     * 符。役満の場合は `undefined`。
      */
     fu?: number;
     /**
-     * 翻数。役満の場合は ``undefined``。
+     * 翻数。役満の場合は `undefined`。
      */
     fanshu?: number;
     /**
      * 役満複合数。
      * 複合には四暗刻をダブル役満にする類のものと、大三元と字一色の複合のような役の複合のケースがある。
-     * 役満でない場合は ``undefined``。
+     * 役満でない場合は `undefined`。
      */
     damanguan?: number;
     /**
@@ -162,7 +168,7 @@ declare module '@kobalab/majiang-core' {
     fenpai: number[];
   }
   /**
-   * ``param`` で指定された値を元に ``hule`` の第3パラメータに使用する場況情報を返す。
+   * **`param`** で指定された値を元に **`hule`** の第3パラメータに使用する場況情報を返す。
    * @param param 指定された場況情報
    * @returns 場況情報
    * @see hule
@@ -170,7 +176,7 @@ declare module '@kobalab/majiang-core' {
   function hule_param(param: Partial<HuleParam> = {}): HuleParam;
 
   /**
-   * ``shoupai`` の手牌から ``rongpai`` で和了したときの和了形の一覧を返す。
+   * **`shoupai`** の手牌から **`rongpai`** で和了したときの和了形の一覧を返す。
    * @param shoupai 手牌
    * @param rongpai 牌
    * @returns 和了形の配列。和了形にならない場合は空配列を返す。
