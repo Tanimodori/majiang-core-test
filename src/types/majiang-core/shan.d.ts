@@ -5,19 +5,19 @@ declare module '@kobalab/majiang-core' {
   class Shan {
     /**
      * ドラ表示牌が **`p`** の場合のドラを返す。
-     * @param p ドラ表示牌
-     * @returns ドラ
+     * @param p ドラ表示{@link Pai | 牌}
+     * @returns ドラ{@link Pai | 牌}
      */
     static zhenbaopai(p: Pai): Pai;
 
     /**
      * インスタンスを生成する。赤牌の枚数、カンドラ、裏ドラ、カン裏は **`rule`** にしたがう。
-     * @param rule ルール
+     * @param rule {@link Rule | ルール}
      */
     constructor(rule: Rule);
 
     /**
-     * インスタンス生成時に指定されたルール
+     * インスタンス生成時に指定された{@link Rule | ルール}
      */
     _rule: Rule;
 
@@ -32,12 +32,12 @@ declare module '@kobalab/majiang-core' {
     _pai: Pai[];
 
     /**
-     * ドラ表示牌の配列。
+     * ドラ表示{@link Pai | 牌}の配列。
      */
     _baopai: Pai[];
 
     /**
-     * 裏ドラ表示牌の配列。
+     * 裏ドラ表示{@link Pai | 牌}の配列。
      */
     _fubaopai: Pai[];
 
@@ -53,14 +53,14 @@ declare module '@kobalab/majiang-core' {
 
     /**
      * 次のツモ牌を返す。
-     * @returns ツモ牌
+     * @returns ツモ{@link Pai | 牌}
      * @throws 牌山固定後に呼び出された場合は例外を発生する。
      */
     zimo(): Pai;
 
     /**
      * リンシャン牌からの次のツモ牌を返す。
-     * @returns ツモ牌
+     * @returns ツモ{@link Pai | 牌}
      * @throws 牌山固定後に呼び出された場合は例外を発生する。
      */
     gangzimo(): Pai;
@@ -86,14 +86,14 @@ declare module '@kobalab/majiang-core' {
 
     /**
      * ドラ表示牌の配列を返す。
-     * @returns 牌の配列
+     * @returns ドラ表示{@link Pai | 牌}の配列
      */
     get baopai(): Pai[];
 
     /**
      * 牌山固定前は `null` を返す。
      * 牌山固定後は裏ドラ表示牌の配列を返す。
-     * @returns 牌の配列
+     * @returns 裏ドラ表示{@link Pai | 牌}の配列
      */
     get fubaopai(): Pai[] | null;
   }

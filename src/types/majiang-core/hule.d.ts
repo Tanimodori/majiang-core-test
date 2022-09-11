@@ -10,8 +10,8 @@ declare module '@kobalab/majiang-core' {
      * * `+`(下家から和了)
      * * `=`(対面から和了)
      * * `-`(上家から和了) のフラグを付加する。
-     * @param shoupai 手牌
-     * @param rongpai 牌
+     * @param shoupai {@link Shoupai | 手牌}
+     * @param rongpai {@link Pai | 牌}
      * @param param 和了点計算に使用する場況情報
      * @returns 和了情報
      */
@@ -45,7 +45,7 @@ declare module '@kobalab/majiang-core' {
      */
     interface HuleParam {
       /**
-       * 和了点計算時に使用するルール。
+       * 和了点計算時に使用する{@link Rule | ルール}。
        * @defaultValue Majiang.rule()
        */
       rule: Rule;
@@ -93,12 +93,12 @@ declare module '@kobalab/majiang-core' {
         tianhu: number;
       };
       /**
-       * ドラ表示牌の配列。
+       * ドラ表示{@link Pai | 牌}の配列。
        * @defaultValue `[]`
        */
       baopai: Pai[];
       /**
-       * 裏ドラ表示牌の配列。リーチのない場合は `null`。
+       * 裏ドラ表示{@link Pai | 牌}の配列。リーチのない場合は `null`。
        * @defaultValue `null`
        */
       fubaopai: Pai[] | null;
@@ -168,7 +168,7 @@ declare module '@kobalab/majiang-core' {
     fenpai: number[];
   }
   /**
-   * **`param`** で指定された値を元に **`hule`** の第3パラメータに使用する場況情報を返す。
+   * **`param`** で指定された値を元に {@link Util.hule} の第3パラメータに使用する場況情報を返す。
    * @param param 指定された場況情報
    * @returns 場況情報
    * @see hule
@@ -177,8 +177,8 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * **`shoupai`** の手牌から **`rongpai`** で和了したときの和了形の一覧を返す。
-   * @param shoupai 手牌
-   * @param rongpai 牌
+   * @param shoupai {@link Shoupai | 手牌}
+   * @param rongpai {@link Pai | 牌}
    * @returns 和了形の配列。和了形にならない場合は空配列を返す。
    */
   function hule_mianzi(shoupai: Shoupai, rongpai: Pai): Paizi[];

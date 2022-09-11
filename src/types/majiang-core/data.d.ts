@@ -185,13 +185,11 @@ declare module '@kobalab/majiang-core' {
        */
       defen: number[];
       /**
-       * ドラ表示牌。
-       * @see Pai
+       * ドラ表示{@link Pai | 牌}。
        */
       baopai: Pai;
       /**
-       * 配牌の [[牌姿]]。その局の東家から順に並べる。
-       * @see Paizi
+       * 配牌の{@link Paizi | 牌姿}。その局の東家から順に並べる。
        */
       shoupai: Paizi[];
     };
@@ -213,8 +211,7 @@ declare module '@kobalab/majiang-core' {
        */
       l: number;
       /**
-       * ツモった牌。
-       * @see Pai
+       * ツモった{@link Pai | 牌}。
        */
       p: Pai;
     };
@@ -236,8 +233,7 @@ declare module '@kobalab/majiang-core' {
        */
       l: number;
       /**
-       * 切った牌。
-       * @see Pai
+       * 切った{@link Pai | 牌}。
        */
       p: Pai;
     };
@@ -259,8 +255,7 @@ declare module '@kobalab/majiang-core' {
        */
       l: number;
       /**
-       * 副露した面子。
-       * @see Menzi
+       * 副露した{@link Menzi | 面子}。
        */
       m: Menzi;
     };
@@ -282,10 +277,9 @@ declare module '@kobalab/majiang-core' {
        */
       l: number;
       /**
-       * ツモった牌。
-       * @see Pai
+       * 槓した{@link Menzi | 面子}。大明槓は副露として扱うので、ここでの槓は暗槓もしくは加槓。
        */
-      p: Pai;
+      m: Menzi;
     };
   }
 
@@ -305,10 +299,9 @@ declare module '@kobalab/majiang-core' {
        */
       l: number;
       /**
-       * 槓した面子。大明槓は副露として扱うので、ここでの槓は暗槓もしくは加槓。
-       * @see Menzi
+       * ツモった{@link Pai | 牌}。
        */
-      m: Menzi;
+      p: Pai;
     };
   }
 
@@ -324,8 +317,7 @@ declare module '@kobalab/majiang-core' {
   interface Kaigang {
     kaigang: {
       /**
-       * 槓ドラ表示牌。
-       * @see Pai
+       * 槓ドラ表示{@link Pai | 牌}。
        */
       baopai: Pai;
     };
@@ -375,8 +367,7 @@ declare module '@kobalab/majiang-core' {
        */
       l: number;
       /**
-       * 和了者の牌姿。ロン和了の場合は和了牌をツモした牌姿にする。
-       * @see Paizi
+       * 和了者の{@link Paizi | 牌姿}。ロン和了の場合は和了牌をツモした牌姿にする。
        */
       shoupai: Paizi;
       /**
@@ -384,8 +375,7 @@ declare module '@kobalab/majiang-core' {
        */
       baojia: number | null;
       /**
-       * 裏ドラ表示牌の配列。リーチでない場合は `null`。
-       * @see Pai
+       * 裏ドラ表示{@link Pai | 牌}の配列。リーチでない場合は `null`。
        */
       fubaopai: Pai[];
       /**
