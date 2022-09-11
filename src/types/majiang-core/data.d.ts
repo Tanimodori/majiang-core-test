@@ -67,8 +67,6 @@ declare module '@kobalab/majiang-core' {
    * 1戦分の対局記録を表すJSON形式データ
    *
    * @remarks
-   * ## 概要
-   *
    * 東南戦、東風戦、一局戦を問わず順位が確定する単位で模打を記録する。
    * リーグ戦などのシリーズ対局も1戦ごとの牌譜を配列に収めることで表現できるが、その形式については規定しない。
    *
@@ -144,8 +142,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 配牌情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ``JavaScript
    * { qipai: {
@@ -197,8 +194,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 自摸情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { zimo: { l: 0, p: "m4" } }
@@ -219,8 +215,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 打牌情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { dapai: { l: 1, p: "z2*" } }
@@ -241,8 +236,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 副露情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { fulou: { l: 0, m: "m567-" } }
@@ -263,8 +257,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 槓情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { gang: { l: 1, m: "z222-2" } }
@@ -285,8 +278,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 槓自摸情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { gangzimo: { l: 1, p: "m9" } }
@@ -307,8 +299,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 開槓情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { kaigang: { baopai: "p7" } }
@@ -325,7 +316,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 和了情報
-   * @see Moda
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { hule: {
@@ -445,8 +436,7 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 流局情報
-   * @see Moda
-   *
+   * @see {@link Moda}
    * @example
    * ```JavaScript
    * { pingju: {
