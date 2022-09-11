@@ -1,24 +1,21 @@
 declare module '@kobalab/majiang-core' {
-  /**
-   * 局進行の際に {@link Game} と {@link Player} で通信されるJSON形式のデータ
-   */
-  type ServerMessage =
-    | KaijuServerMessage //
-    | QipaiServerMessage
-    | ZimoServerMessage
-    | DapaiServerMessage
-    | FulouServerMessage
-    | GangServerMessage
-    | GangzimoServerMessage
-    | KaigangServerMessage
-    | HuleServerMessage
-    | PingjuServerMessage
-    | JiejuServerMessage;
+  /** Server Message */
 
   /**
    * 局進行の際に {@link Game} と {@link Player} で通信されるJSON形式のデータ
    */
-  type PlayerMessage = unknown;
+  type GameMessage =
+    | KaijuGameMessage //
+    | QipaiGameMessage
+    | ZimoGameMessage
+    | DapaiGameMessage
+    | FulouGameMessage
+    | GangGameMessage
+    | GangzimoGameMessage
+    | KaigangGameMessage
+    | HuleGameMessage
+    | PingjuGameMessage
+    | JiejuGameMessage;
 
   /**
    * 開局メッセージ
@@ -38,7 +35,7 @@ declare module '@kobalab/majiang-core' {
    * } }
    * ```
    */
-  interface KaijuServerMessage {
+  interface KaijuGameMessage {
     kaiju: {
       /**
        * 席順。(`0`: 仮東、`1`: 仮南、`2`: 仮西、`3`: 仮北)
@@ -81,7 +78,7 @@ declare module '@kobalab/majiang-core' {
    * ```
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface QipaiServerMessage extends Qipai {}
+  interface QipaiGameMessage extends Qipai {}
 
   /**
    * 自摸メッセージ
@@ -94,7 +91,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Zimo}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface ZimoServerMessage extends Zimo {}
+  interface ZimoGameMessage extends Zimo {}
 
   /**
    * 打牌メッセージ
@@ -105,7 +102,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Dapai}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DapaiServerMessage extends Dapai {}
+  interface DapaiGameMessage extends Dapai {}
 
   /**
    * 副露メッセージ
@@ -116,7 +113,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Fulou}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface FulouServerMessage extends Fulou {}
+  interface FulouGameMessage extends Fulou {}
 
   /**
    * 槓メッセージ
@@ -127,7 +124,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Gang}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface GangServerMessage extends Gang {}
+  interface GangGameMessage extends Gang {}
 
   /**
    * 槓メッセージ
@@ -138,7 +135,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Gangzimo}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface GangzimoServerMessage extends Gangzimo {}
+  interface GangzimoGameMessage extends Gangzimo {}
 
   /**
    * 開槓メッセージ
@@ -149,7 +146,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Kaigang}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface KaigangServerMessage extends Kaigang {}
+  interface KaigangGameMessage extends Kaigang {}
 
   /**
    * 和了メッセージ
@@ -187,7 +184,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Hule}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface HuleServerMessage extends Hule {}
+  interface HuleGameMessage extends Hule {}
 
   /**
    * 流局メッセージ
@@ -205,7 +202,7 @@ declare module '@kobalab/majiang-core' {
    * @see {@link Pingju}
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface PingjuServerMessage extends Pingju {}
+  interface PingjuGameMessage extends Pingju {}
 
   /**
    * 終局メッセージ
@@ -218,7 +215,14 @@ declare module '@kobalab/majiang-core' {
    * } }
    * ```
    */
-  interface JiejuServerMessage {
+  interface JiejuGameMessage {
     jieju: Paipu;
   }
+
+  /** Client Message */
+
+  /**
+   * 局進行の際に {@link Game} と {@link Player} で通信されるJSON形式のデータ
+   */
+  type PlayerMessage = unknown;
 }
