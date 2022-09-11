@@ -141,7 +141,7 @@ declare module '@kobalab/majiang-core' {
      * 対局者からの応答を格納する配列。
      * {@link Game.call_players} 呼び出し時に配列を生成する。
      */
-    _reply: number[];
+    _reply: unknown[];
 
     /**
      * 最終局(オーラス)の局数。
@@ -252,5 +252,60 @@ declare module '@kobalab/majiang-core' {
      * 値が設定されていれば非同期呼出し待ちであり、``clearTimeout()`` を呼び出せば非同期呼出しをキャンセルできる。
      */
     _timeout_id?: number;
+
+    /**
+     * 非同期モードで対局を開始する。
+     * @param qijia 起家を指定すること(``0``〜``3``)。指定しない場合はランダムに起家を決定する。
+     */
+    kaiju(qijia: number): void;
+
+    /**
+     *対局者が応答の際に呼び出す。
+     * @param id  対局者の席順(``0``〜``3``)
+     * @param reply {@link unknown | メッセージ}。応答内容。
+     */
+    reply(id: number, reply: unknown): void;
+
+    /**
+     * 非同期モードの対局を停止する。
+     * @param callback 停止の際に呼び出す関数。
+     */
+    stop(callback?: () => void): void;
+
+    /**
+     * 非同期モードの対局を再開する。
+     */
+    start(): void;
+
+    /**
+     * デバッグ用。同期モードで対局を開始する。
+     * 対局終了まで一切の非同期呼び出しは行わず、無停止で対局を完了する。
+     */
+    do_sync(): void;
+
+    /**
+     * インスタンス変数 ``_model`` を返す。
+     */
+    get model(): unknown;
+
+    /**
+     * インスタンス変数 ``_view`` に ``view`` を設定する。
+     */
+    set view(view: unknown);
+
+    /**
+     * インスタンス変数 ``_speed`` を返す。
+     */
+    get speed(): number;
+
+    /**
+     * インスタンス変数 **_speed** に **speed** を設定する。
+     */
+    set speed(speed: number);
+
+    /**
+     * インスタンス変数 **_wait** に **wait** を設定する。
+     */
+    set wait(wait: number);
   }
 }
