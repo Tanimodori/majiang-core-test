@@ -141,7 +141,7 @@ declare module '@kobalab/majiang-core' {
      * 対局者からの応答を格納する配列。
      * {@link Game.call_players} 呼び出し時に配列を生成する。
      */
-    _reply: unknown[];
+    _reply: PlayerMessage[];
 
     /**
      * 最終局(オーラス)の局数。
@@ -260,11 +260,11 @@ declare module '@kobalab/majiang-core' {
     kaiju(qijia: number): void;
 
     /**
-     *対局者が応答の際に呼び出す。
+     * 対局者が応答の際に呼び出す。
      * @param id  対局者の席順(`0`〜`3`)
-     * @param reply {@link unknown | メッセージ}。応答内容。
+     * @param reply {@link PlayerMessage | メッセージ}。応答内容。
      */
-    reply(id: number, reply: unknown): void;
+    reply(id: number, reply: PlayerMessage): void;
 
     /**
      * 非同期モードの対局を停止する。
@@ -316,23 +316,23 @@ declare module '@kobalab/majiang-core' {
 
     /**
      * 対局者に **`msg`** を通知する。対局者からの応答はない。
-     * @param type {@link unknown | メッセージ} の種別を示す。
-     * @param msg {@link unknown | メッセージ}
+     * @param type {@link GameMessage | メッセージ} の種別を示す。
+     * @param msg {@link GameMessage | メッセージ}
      * @internal
      */
-    notify_players(type: string, msg: unknown): void;
+    notify_players(type: string, msg: GameMessage): void;
 
     /**
-     * 対局者に **msg** を通知する。
+     * 対局者に **`msg`** を通知する。
      * 対局者からの応答を待って、{@link Game.next} が非同期に呼び出される。
-     * @param type {@link unknown | メッセージ} の種別を示す。
-     * @param msg {@link unknown | メッセージ}
+     * @param type {@link GameMessage | メッセージ} の種別を示す。
+     * @param msg {@link GameMessage | メッセージ}
      * @param timeout
      * **`timeout`** で {@link Game.next} 呼び出しまでの待ち時間(ms)を指定し、局の進行速度を調整することもできる。
      * **`timeout`** の指定がない場合は、インスタンス変数 **`_speed`** に応じて待ち時間を決定する。
      * @internal
      */
-    call_players(type: string, msg: unknown, timeout?: number): void;
+    call_players(type: string, msg: GameMessage, timeout?: number): void;
 
     /**
      * 配牌の局進行を行う。
@@ -530,9 +530,9 @@ declare module '@kobalab/majiang-core' {
     /**
      * 手番 **`l`** からの応答を取得する。
      * @param l 手番
-     * @returns {@link unknown | メッセージ}
+     * @returns 応答{@link PlayerMessage | メッセージ}
      * @internal
      */
-    get_reply(l: number): unknown;
+    get_reply(l: number): PlayerMessage;
   }
 }
