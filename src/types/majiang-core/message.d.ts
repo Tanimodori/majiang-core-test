@@ -1,7 +1,9 @@
 declare module '@kobalab/majiang-core' {
-  /** Server Message */
+  /** 通知メッセージ */
 
   /**
+   * 通知メッセージ
+   * @remarks
    * 局進行の際に {@link Game} と {@link Player} で通信されるJSON形式のデータ
    */
   type GameMessage =
@@ -18,7 +20,7 @@ declare module '@kobalab/majiang-core' {
     | JiejuGameMessage;
 
   /**
-   * 開局メッセージ
+   * 開局通知メッセージ
    * @example
    * ```javascript
    * { kaiju: {
@@ -61,7 +63,7 @@ declare module '@kobalab/majiang-core' {
   }
 
   /**
-   * 配牌メッセージ
+   * 配牌通知メッセージ
    * @remarks
    * 他家の配牌（ **`shoupai`** ）はマスクして通知される。
    * @example
@@ -81,7 +83,7 @@ declare module '@kobalab/majiang-core' {
   interface QipaiGameMessage extends Qipai {}
 
   /**
-   * 自摸メッセージ
+   * 自摸通知メッセージ
    * @remarks
    * 他家のツモ牌（ **`p`** ）はマスクして通知される。
    * @example
@@ -94,7 +96,7 @@ declare module '@kobalab/majiang-core' {
   interface ZimoGameMessage extends Zimo {}
 
   /**
-   * 打牌メッセージ
+   * 打牌通知メッセージ
    * @example
    * ```JavaScript
    * { dapai: { l: 1, p: "z2*" } }
@@ -105,7 +107,7 @@ declare module '@kobalab/majiang-core' {
   interface DapaiGameMessage extends Dapai {}
 
   /**
-   * 副露メッセージ
+   * 副露通知メッセージ
    * @example
    * ```JavaScript
    * { fulou: { l: 0, m: "m567-" } }
@@ -116,7 +118,7 @@ declare module '@kobalab/majiang-core' {
   interface FulouGameMessage extends Fulou {}
 
   /**
-   * 槓メッセージ
+   * 槓通知メッセージ
    * @example
    * ```JavaScript
    * { gang: { l: 1, m: "z222-2" } }
@@ -127,7 +129,7 @@ declare module '@kobalab/majiang-core' {
   interface GangGameMessage extends Gang {}
 
   /**
-   * 槓メッセージ
+   * 槓通知メッセージ
    * @example
    * ```JavaScript
    * { gangzimo: { l: 1, p: "m9" } }
@@ -138,7 +140,7 @@ declare module '@kobalab/majiang-core' {
   interface GangzimoGameMessage extends Gangzimo {}
 
   /**
-   * 開槓メッセージ
+   * 開槓通知メッセージ
    * @example
    * ```JavaScript
    * { kaigang: { baopai: "p7" } }
@@ -149,7 +151,7 @@ declare module '@kobalab/majiang-core' {
   interface KaigangGameMessage extends Kaigang {}
 
   /**
-   * 和了メッセージ
+   * 和了通知メッセージ
    * @example
    * ```JavaScript
    * { hule: {
@@ -187,7 +189,7 @@ declare module '@kobalab/majiang-core' {
   interface HuleGameMessage extends Hule {}
 
   /**
-   * 流局メッセージ
+   * 流局通知メッセージ
    * @example
    * ```JavaScript
    * { pingju: {
@@ -205,7 +207,7 @@ declare module '@kobalab/majiang-core' {
   interface PingjuGameMessage extends Pingju {}
 
   /**
-   * 終局メッセージ
+   * 終局通知メッセージ
    * @remarks
    * {@link Paipu | 牌譜}を通知する。
    * @example
@@ -219,10 +221,81 @@ declare module '@kobalab/majiang-core' {
     jieju: Paipu;
   }
 
-  /** Client Message */
+  /** 応答メッセージ */
 
   /**
+   * 応答メッセージ
+   * @remarks
    * 局進行の際に {@link Game} と {@link Player} で通信されるJSON形式のデータ
    */
-  type PlayerMessage = unknown;
+  type PlayerMessage =
+    | DapaiPlayerMessage //
+    | FulouPlayerMessage
+    | GangPlayerMessage
+    | HulePlayerMessage
+    | DaopaiPlayerMessage;
+
+  /**
+   * 打牌応答メッセージ
+   * @example
+   *  ```JavaScript
+   * { dapai: "z2*" }
+   * ```
+   */
+  interface DapaiPlayerMessage {
+    /**
+     * 切っる{@link Pai | 牌}。
+     */
+    dapai: Pai;
+  }
+
+  /**
+   * 副露応答メッセージ
+   * @example
+   *  ```JavaScript
+   * { fulou: "m567-" }
+   * ```
+   */
+  interface FulouPlayerMessage {
+    /**
+     * 副露する{@link Menzi | 面子}。
+     */
+    fulou: Menzi;
+  }
+
+  /**
+   * 槓応答メッセージ
+   * @example
+   *  ```JavaScript
+   * { gang: "m567-" }
+   * ```
+   */
+  interface GangPlayerMessage {
+    /**
+     * 槓する{@link Menzi | 面子}。
+     */
+    gang: Menzi;
+  }
+
+  /**
+   * 和了応答メッセージ
+   * @example
+   *  ```JavaScript
+   * { hule: "-" }
+   * ```
+   */
+  interface HulePlayerMessage {
+    hule: string;
+  }
+
+  /**
+   * 倒牌応答メッセージ
+   * @example
+   *  ```JavaScript
+   * { daopai: "-" }
+   * ```
+   */
+  interface DaopaiPlayerMessage {
+    daopai: string;
+  }
 }
