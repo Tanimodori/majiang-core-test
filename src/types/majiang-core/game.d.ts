@@ -203,7 +203,7 @@ declare module '@kobalab/majiang-core' {
     _hule: number[];
 
     /**
-     * 処理中の和了が槍槓のとき `qiangang`、嶺上開花のとき `lingshang`、それ以外なら `null`。
+     * 処理中の和了が槍槓のとき `"qiangang"`、嶺上開花のとき `"lingshang"`、それ以外なら `null`。
      */
     _hule_option: string | null;
 
