@@ -129,7 +129,7 @@ declare module '@kobalab/majiang-core' {
    * 模打情報
    */
   type Moda = Array<
-    | Peipai // 配牌情報
+    | Qipai // 配牌情報
     | Zimo // 自摸情報
     | Dapai // 打牌情報
     | Fulou // 副露情報
@@ -159,7 +159,7 @@ declare module '@kobalab/majiang-core' {
    * } }
    * ``
    */
-  interface Peipai {
+  interface Qipai {
     qipai: {
       /**
        * 場風。(`0`: 東、`1`: 南、`2`: 西、`3`: 北)
