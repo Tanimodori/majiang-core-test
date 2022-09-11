@@ -58,5 +58,66 @@ declare module '@kobalab/majiang-core' {
      * @returns カン可能な{@link Menzi | 面子}の配列
      */
     static get_gang_mianzi(rule: Rule, shoupai: Shoupai, p: Pai, paishu: number, n_gang: number): Menzi[];
+
+    /**
+     * ``rule`` にしたがって ``shoupai`` からリーチ可能か判定する。
+     * @param rule {@link Rule | ルール}
+     * @param shoupai {@link Shoupai | 手牌}
+     * @param p ``null`` のときはリーチ可能な打牌一覧を返す。{@link Pai | 牌}のときは ``p`` を打牌してリーチ可能なら ``true`` を返す。
+     * @param paishu 現在の残り牌数
+     * @param defen 現在の持ち点
+     * @returns ``p`` が ``null`` のときはリーチ可能な打牌の配列。``p`` が {@link Pai | 牌} のときは ``p`` を打牌してリーチ可能なら ``true`` を返す
+     */
+    static allow_lizhi(rule: Rule, shoupai: Shoupai, p: Pai | null, paishu: number, defen: number): Pai[] | boolean;
+
+    /**
+     * ``rule`` にしたがって ``shoupai`` で和了可能か判定する。
+     * @param rule {@link Rule | ルール}
+     * @param shoupai {@link Shoupai | 手牌}
+     * @param p ``null`` のときはツモ和了可能なら ``true`` を返す。{@link Pai | 牌}のときは ``p`` でロン和了可能なら ``true`` を返す。
+     * @param zhuangfeng 場風(``0``: 東、``1``: 南、``2``: 西、``3``: 北)
+     * @param menfeng 自風
+     * @param hupai 状況役があるときは ``true`` を指定する
+     * @param neng_rong フリテンのときは ``false`` を指定する
+     * @returns ロン和了可能なら ``true`` を返す。
+     */
+    static allow_hule(
+      rule: Rule,
+      shoupai: Shoupai,
+      p: Pai | null,
+      zhuangfeng: number,
+      menfeng: number,
+      hupai: boolean,
+      neng_rong: boolean,
+    ): boolean;
+
+    /**
+     * ``rule`` にしたがって ``shoupai`` で九種九牌流局可能か判定する。
+     * @param rule {@link Rule | ルール}
+     * @param shoupai {@link Shoupai | 手牌}
+     * @param diyizimo 第一ツモ順の場合は ``true`` を指定する
+     */
+    static allow_pingju(rule: Rule, shoupai: Shoupai, diyizimo: boolean): boolean;
+
+    /**
+     * インスタンス生成時に指定された {@link Player | 対局者} の配列。
+     */
+    _players: Player[];
+
+    /**
+     * インスタンス生成時に指定された対局終了時に呼び出す関数。
+     * @see {@link Paipu | 牌譜}
+     */
+    _callback: (paipu: Paipu) => void;
+
+    /**
+     * インスタンス生成時に指定された{@link Rule | ルール}
+     */
+    _rule: Rule;
+
+    /**
+     * {@link BoardInfo | 卓情報}
+     */
+    _model: BoardInfo;
   }
 }
