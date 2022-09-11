@@ -173,7 +173,7 @@ declare module '@kobalab/majiang-core' {
    * ``shoupai`` の手牌から ``rongpai`` で和了したときの和了形の一覧を返す。
    * @param shoupai 手牌
    * @param rongpai 牌
-   * @returns ``shoupai`` の手牌から ``rongpai`` で和了したときの和了形。和了形にならない場合は空配列を返す。
+   * @returns 和了形の配列。和了形にならない場合は空配列を返す。
    */
-  function hule_mianzi(shoupai: Shoupai, rongpai: Pai): unknown[];
+  function hule_mianzi(shoupai: Shoupai, rongpai: Pai): Paizi[];
 }
