@@ -4,3 +4,5 @@
 /// <reference path="shoupai.d.ts" />
 /// <reference path="shan.d.ts" />
 /// <reference path="he.d.ts" />
+/// <reference path="xiangting.d.ts" />
+/// <reference path="hule.d.ts" />
