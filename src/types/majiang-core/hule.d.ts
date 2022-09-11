@@ -39,36 +39,75 @@ declare module '@kobalab/majiang-core' {
      * ```
      */
     interface HuleParam {
-      /** 和了点計算時に使用するルール。 */
+      /**
+       * 和了点計算時に使用するルール。
+       * @defaultValue Majiang.rule()
+       */
       rule: Rule;
-      /** 場風。(``0``: 東、``1``: 南、``2``: 西、``3``: 北) */
+      /**
+       * 場風。(``0``: 東、``1``: 南、``2``: 西、``3``: 北)
+       * @defaultValue ``0``
+       */
       zhuangfeng: number;
-      /** 自風。(``0``: 東、``1``: 南、``2``: 西、``3``: 北) */
+      /**
+       * 自風。(``0``: 東、``1``: 南、``2``: 西、``3``: 北)
+       * @defaultValue ``1``
+       */
       menfeng: number;
       /** 状況役 */
       hupai: {
-        /** ``0``: リーチなし、``1``: リーチ、``2``: ダブルリーチ。 */
+        /**
+         * ``0``: リーチなし、``1``: リーチ、``2``: ダブルリーチ。
+         * @defaultValue ``0``
+         */
         lizhi: number;
-        /** 一発のとき ``true``。 */
+        /**
+         * 一発のとき ``true``。
+         * @defaultValue ``false``
+         */
         yifa: boolean;
-        /** 槍槓のとき ``true``。 */
+        /**
+         * 槍槓のとき ``true``。
+         * @defaultValue ``false``
+         */
         qianggang: boolean;
-        /** 嶺上開花のとき ``true``。 */
+        /**
+         *  嶺上開花のとき ``true``。
+         * @defaultValue ``false``
+         */
         lingshang: boolean;
-        /** ``0``: ハイテイなし、``1``: ハイテイツモ、``2``: ハイテイロン。 */
+        /**
+         * ``0``: ハイテイなし、``1``: ハイテイツモ、``2``: ハイテイロン。
+         * @defaultValue ``0``
+         */
         haidi: number;
-        /** ``0``: 天和/地和なし、``1``: 天和、``2``: 地和。 */
+        /**
+         * ``0``: 天和/地和なし、``1``: 天和、``2``: 地和。
+         * @defaultValue ``0``
+         */
         tianhu: number;
       };
-      /** ドラ表示牌の配列。 */
+      /**
+       * ドラ表示牌の配列。
+       * @defaultValue ``[]``
+       */
       baopai: Pai[];
-      /** 裏ドラ表示牌の配列。リーチのない場合は ``null``。 */
+      /**
+       * 裏ドラ表示牌の配列。リーチのない場合は ``null``。
+       * @defaultValue ``null``
+       */
       fubaopai: Pai[] | null;
       /** 供託 */
       jicun: {
-        /** 積み棒の本数。 */
+        /**
+         * 積み棒の本数。
+         * @defaultValue ``0``
+         */
         changbang: number;
-        /** リーチ棒の本数。 */
+        /**
+         * リーチ棒の本数。
+         * @defaultValue ``0``
+         */
         lizhibang: number;
       };
     }
@@ -122,4 +161,19 @@ declare module '@kobalab/majiang-core' {
      */
     fenpai: number[];
   }
+  /**
+   * ``param`` で指定された値を元に ``hule`` の第3パラメータに使用する場況情報を返す。
+   * @param param 指定された場況情報
+   * @returns 場況情報
+   * @see hule
+   */
+  function hule_param(param: Partial<HuleParam> = {}): HuleParam;
+
+  /**
+   * ``shoupai`` の手牌から ``rongpai`` で和了したときの和了形の一覧を返す。
+   * @param shoupai 手牌
+   * @param rongpai 牌
+   * @returns ``shoupai`` の手牌から ``rongpai`` で和了したときの和了形。和了形にならない場合は空配列を返す。
+   */
+  function hule_mianzi(shoupai: Shoupai, rongpai: Pai): unknown[];
 }
