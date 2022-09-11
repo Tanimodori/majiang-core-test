@@ -3,6 +3,95 @@ declare module '@kobalab/majiang-core' {
   interface Board extends BoardInfo {}
 
   class Board implements BoardInfo {
-    constructor(kaiju?: Paipu | KaijuGameMessage);
+    /**
+     * **`kaiju`** から開局時の卓情報を生成する。
+     * **`kaiju`** が指定されない場合は、空の卓情報を生成する。
+     * @param kaiju {@link Paipu} (または {@link KaijuGameMessage.kaiju})
+     */
+    constructor(kaiju?: Paipu | KaijuGameMessage['kaiju']);
+
+    /**
+     * 成立待ちのリーチ宣言があるとき真。
+     */
+    _lizhi: boolean;
+
+    /**
+     * ダブロンの際に先の和了の {@link Hule.hule | `hule.fenpai`} を次の和了に引き継ぐ。
+     */
+    _fenpei: boolean;
+
+    /**
+     * **`kaiju`** を卓情報に反映する。
+     * @param kaiju {@link Paipu} (または {@link KaijuGameMessage})
+     */
+    kaiju(kaiju?: Paipu | KaijuGameMessage['kaiju']): void;
+
+    /**
+     * 席順に対する現在の自風を返す。
+     * @param id 席順 (`0`: 仮東、`1`: 仮南、`2`: 仮西、`3`: 仮北)
+     * @returns 現在の自風 (`0`: 東、`1`: 南、`2`: 西、`3`: 北)
+     */
+    menfeng(id: number): number;
+
+    /**
+     * **`qipai`** を卓情報に反映する。
+     * @param qipai {@link Qipai} (または {@link QipaiGameMessage})
+     */
+    qipai(qipai: Qipai['qipai'] | QipaiGameMessage['qipai']): void;
+
+    /**
+     * **`zimo`** を卓情報に反映する。
+     * @remarks {@link Gangzimo} ({@link GangzimoGameMessage})の場合も本メソッドを使用する。
+     * @param zimo {@link Zimo} (または {@link ZimoGameMessage})
+     */
+    zimo(
+      qipai:
+        | Zimo['zimo'] //
+        | Gangzimo['zimo']
+        | ZimoGameMessage['zimo']
+        | GangzimoGameMessage['zimo'],
+    ): void;
+
+    /**
+     * **`dapai`** を卓情報に反映する。
+     * @param dapai {@link Dapai} (または {@link DapaiGameMessage})
+     */
+    dapai(dapai: Dapai['dapai'] | DapaiGameMessage['dapai']): void;
+
+    /**
+     * **`fulou`** を卓情報に反映する。
+     * @param fulou {@link Fulou} (または {@link FulouGameMessage})
+     */
+    fulou(fulou: Fulou['fulou'] | FulouGameMessage['fulou']): void;
+
+    /**
+     * **`gang`** を卓情報に反映する。
+     * @param gang {@link Gang} (または {@link GangGameMessage})
+     */
+    gang(fulou: Gang['gang'] | GangGameMessage['gang']): void;
+
+    /**
+     * **`kaigang`** を卓情報に反映する。
+     * @param kaigang {@link Kaigang} (または {@link KaigangGameMessage})
+     */
+    kaigang(kaigang: Kaigang['kaigang'] | KaigangGameMessage['kaigang']): void;
+
+    /**
+     * **`hule`** を卓情報に反映する。
+     * @param hule {@link Hule} (または {@link HuleGameMessage})
+     */
+    hule(hule: Hule['hule'] | HuleGameMessage['hule']): void;
+
+    /**
+     * **`pingju`** を卓情報に反映する。
+     * @param pingju {@link Pingju} (または {@link PingjuGameMessage})
+     */
+    pingju(pingju: Pingju['pingju'] | PingjuGameMessage['pingju']): void;
+
+    /**
+     * 成立待ちのリーチ宣言を成立させる。
+     * @internal
+     */
+    lizhi(): void;
   }
 }
