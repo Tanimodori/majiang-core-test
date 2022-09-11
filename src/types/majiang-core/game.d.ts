@@ -286,7 +286,7 @@ declare module '@kobalab/majiang-core' {
     /**
      * インスタンス変数 **`_model`** を返す。
      */
-    get model(): unknown;
+    get model(): BoardInfo;
 
     /**
      * インスタンス変数 **`_view`** に **`view`** を設定する。
