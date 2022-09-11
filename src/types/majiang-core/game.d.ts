@@ -66,7 +66,7 @@ declare module '@kobalab/majiang-core' {
      * @param p `null` のときはリーチ可能な打牌一覧を返す。{@link Pai | 牌}のときは **`p`** を打牌してリーチ可能なら `true` を返す。
      * @param paishu 現在の残り牌数
      * @param defen 現在の持ち点
-     * @returns **`p`** が `null` のときはリーチ可能な打牌の配列。**`p`** が {@link Pai | 牌} のときは **`p`** を打牌してリーチ可能なら `true` を返す
+     * @returns **`p`** が `null` のときはリーチ可能な打牌の配列。 **`p`** が {@link Pai | 牌} のときは **`p`** を打牌してリーチ可能なら `true` を返す
      */
     static allow_lizhi(rule: Rule, shoupai: Shoupai, p: Pai | null, paishu: number, defen: number): Pai[] | boolean;
 
@@ -307,5 +307,232 @@ declare module '@kobalab/majiang-core' {
      * インスタンス変数 **`_wait`** に **`wait`** を設定する。
      */
     set wait(wait: number);
+
+    /**
+     * 対局者からの応答を読み出し、対局の次のステップに進む。
+     * @internal
+     */
+    next(): void;
+
+    /**
+     * 対局者に **`msg`** を通知する。対局者からの応答はない。
+     * @param type {@link unknown | メッセージ} の種別を示す。
+     * @param msg {@link unknown | メッセージ}
+     * @internal
+     */
+    notify_players(type: string, msg: unknown): void;
+
+    /**
+     * 対局者に **msg** を通知する。
+     * 対局者からの応答を待って、{@link Game.next} が非同期に呼び出される。
+     * @param type {@link unknown | メッセージ} の種別を示す。
+     * @param msg {@link unknown | メッセージ}
+     * @param timeout
+     * **`timeout`** で {@link Game.next} 呼び出しまでの待ち時間(ms)を指定し、局の進行速度を調整することもできる。
+     * **`timeout`** の指定がない場合は、インスタンス変数 **`_speed`** に応じて待ち時間を決定する。
+     * @internal
+     */
+    call_players(type: string, msg: unknown, timeout?: number): void;
+
+    /**
+     * 配牌の局進行を行う。
+     * @param shan {@link Shan}
+     * @internal
+     */
+    qipai(shan: Shan): void;
+
+    /**
+     * ツモの局進行を行う。
+     * @internal
+     */
+    zimo(): void;
+
+    /**
+     * **`dapai`** で指定された牌を打牌する局進行を行う。
+     * @param dapai {@link Pai | 牌}
+     * @internal
+     */
+    dapai(dapai: Pai): void;
+
+    /**
+     * **`fulou`** で指定された面子を副露する局進行を行う。
+     * @param fulou {@link Menzi | 面子}
+     * @internal
+     */
+    fulou(fulou: Menzi): void;
+
+    /**
+     * **`gang`** で指定された面子で加槓あるいは暗槓する局進行を行う。
+     * @param gang {@link Menzi | 面子}
+     * @internal
+     */
+    gang(gang: Menzi): void;
+
+    /**
+     * リンシャン牌ツモの局進行を行う。
+     * @internal
+     */
+    gangzimo(): void;
+
+    /**
+     * 開槓の局進行を行う。
+     * @internal
+     */
+    kaigang(): void;
+
+    /**
+     * 和了の局進行を行う。
+     * @internal
+     */
+    hule(): void;
+
+    /**
+     * 流局の局進行を行う。
+     * @param name 指定された場合は途中流局とする。
+     * @param shoupai 流局時に公開した {@link Paizi | 牌姿} を指定する。
+     * @internal
+     */
+    pingju(name: string, shoupai: Paizi[]): void;
+
+    /**
+     * 対局終了の判断を行う。
+     * @internal
+     */
+    last(): void;
+
+    /**
+     * 対局終了の処理を行う。
+     * @internal
+     */
+    jieju(): void;
+
+    /**
+     * 配牌の局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_kaiju(): void;
+
+    /**
+     * ツモの局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_qipai(): void;
+
+    /**
+     * ツモ応答の妥当性を確認し、次の局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_zimo(): void;
+
+    /**
+     * 打牌応答の妥当性を確認し、次の局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_dapai(): void;
+
+    /**
+     * 副露応答の妥当性を確認し、次の局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_fulou(): void;
+
+    /**
+     * 槓応答の妥当性を確認し、次の局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_gang(): void;
+
+    /**
+     * 和了応答の妥当性を確認し、次の局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_hule(): void;
+
+    /**
+     * 流局応答の妥当性を確認し、次の局進行メソッドを呼び出す。
+     * @internal
+     */
+    reply_pingju(): void;
+
+    /**
+     * {@link Game.get_dapai} を呼び出し、インスタンス変数 **`_rule`** にしたがって現在の手番の手牌から打牌可能な牌の一覧を返す。
+     * @returns 打牌可能な{@link Pai | 牌}の配列
+     * @internal
+     */
+    get_dapai(): Pai[];
+
+    /**
+     * {@link Game.get_chi_mianzi} を呼び出し、インスタンス変数 **`_rule`** にしたがって手番 **`l`** が現在の打牌でチー可能な面子の一覧を返す。
+     * @param l 手番
+     * @returns チー可能な{@link Menzi | 面子}の配列
+     * @internal
+     */
+    get_chi_mianzi(l: number): Menzi[];
+
+    /**
+     * {@link Game.get_peng_mianzi} を呼び出し、インスタンス変数 **`_rule`** にしたがって手番 **`l`** が現在の打牌でポン可能な面子の一覧を返す。
+     * @param l 手番
+     * @returns ポン可能な{@link Menzi | 面子}の配列
+     * @internal
+     */
+    get_peng_mianzi(l: number): Menzi[];
+
+    /**
+     * {@link Game.get_gang_mianzi} を呼び出し、インスタンス変数 **`_rule`** にしたがってカン可能な面子の一覧を返す。
+     * @param l 指定された場合は大明槓、`null` の場合は暗槓と加槓が対象になる。
+     * @returns カン可能な{@link Menzi | 面子}の配列
+     * @internal
+     */
+    get_gang_mianzi(l: number): Menzi[];
+
+    /**
+     * {@link Game.allow_lizhi} を呼び出し、インスタンス変数 **`_rule`** にしたがってリーチ可能か判定する。
+     * @param p `null` のときはリーチ可能な打牌一覧を返す。{@link Pai | 牌}のときは **`p`** を打牌してリーチ可能なら `true` を返す。
+     * @returns **`p`** が `null` のときはリーチ可能な打牌の配列。 **`p`** が {@link Pai | 牌} のときは **`p`** を打牌してリーチ可能なら `true` を返す
+     * @internal
+     */
+    allow_lizhi(p: Pai | null): Pai[] | boolean;
+
+    /**
+     * {@link Game.allow_hule} を呼び出し、インスタンス変数 **`_rule`** にしたがって和了可能か判定する。
+     * @param l
+     * **`l`** が `null` のときは現在の手番がツモ和了可能なら `true` を返す。
+     * **`l`** が指定された場合は手番 **`l`** がロン和了可能なら `true` を返す。
+     * @returns ロン和了可能なら `true` を返す。
+     * @internal
+     */
+    allow_hule(l: number | null): boolean;
+
+    /**
+     * {@link Game.allow_pingju} を呼び出し、インスタンス変数 **`_rule`** にしたがって現在の手番が九種九牌流局可能か判定する。
+     * @returns 九種九牌流局可能なら `true` を返す。
+     * @internal
+     */
+    allow_pingju(): boolean;
+
+    /**
+     * **`timeout`** で指定した時間(ms)休止した後に **`callback`** を呼び出す。
+     * ゲームに「タメ」を作るためにチー/ポンなどの発声のタイミングで呼び出される。
+     * **`timeout`** の指定がない場合は、インスタンス変数 **`_speed`** に応じて待ち時間を決定するが、最低でも 500ms は待ち合わせる。
+     * @param callback 待ち時間の後で呼び出す関数
+     * @param timeout 待ち時間
+     * @internal
+     */
+    delay(callback: () => void, timeout?: number): void;
+
+    /**
+     * インスタンス変数 **`_paipu`** の適切な位置に摸打情報を追加する。
+     * @param paipu 追加の{@link Paipu | 牌譜}の摸打情報
+     * @internal
+     */
+    add_paipu(paipu: Paipu);
+
+    /**
+     * 手番 **`l`** からの応答を取得する。
+     * @param l 手番
+     * @returns {@link unknown | メッセージ}
+     * @internal
+     */
+    get_reply(l: number): unknown;
   }
 }
