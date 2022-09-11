@@ -9,3 +9,4 @@
 /// <reference path="he.d.ts" />
 /// <reference path="game.d.ts" />
 /// <reference path="boardinfo.d.ts" />
+/// <reference path="board.d.ts" />
