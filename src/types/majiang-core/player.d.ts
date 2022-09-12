@@ -132,5 +132,26 @@ declare module '@kobalab/majiang-core' {
      * @internal
      */
     jieju(paipu: Paipu): void;
+
+    /**
+     * 自身の手牌を返す。
+     * @returns 自身の{@link Shoupai | 手牌}
+     * @internal
+     */
+    get shoupai(): Shoupai;
+
+    /**
+     * 自身の捨て牌を返す。
+     * @returns 自身の{@link He | 捨て牌}
+     * @internal
+     */
+    get he(): He;
+
+    /**
+     * 牌山を返す。
+     * @returns 互換のオブジェクト{@link Shan | 牌山}
+     * @internal
+     */
+    get shan(): Shan;
   }
 }
