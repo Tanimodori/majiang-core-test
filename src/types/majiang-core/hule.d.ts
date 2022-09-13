@@ -11,11 +11,11 @@ declare module '@kobalab/majiang-core' {
      * * `=`(対面から和了)
      * * `-`(上家から和了) のフラグを付加する。
      * @param shoupai {@link Shoupai | 手牌}
-     * @param rongpai {@link Pai | 牌}
+     * @param rongpai {@link Pai | 牌}。指定されていないの場合に手牌の最後の一枚がツモと見なす。
      * @param param 和了点計算に使用する場況情報
      * @returns 和了情報
      */
-    function hule(shoupai: Shoupai, rongpai: Pai, param: HuleParam): HuleResult;
+    function hule(shoupai: Shoupai, rongpai: Pai | null | undefined, param: HuleParam): HuleResult;
 
     /**
      * 和了点計算に使用する場況情報
@@ -77,7 +77,7 @@ declare module '@kobalab/majiang-core' {
          */
         qianggang: boolean;
         /**
-         *  嶺上開花のとき `true`。
+         * 嶺上開花のとき `true`。
          * @defaultValue `false`
          */
         lingshang: boolean;
@@ -197,9 +197,9 @@ declare module '@kobalab/majiang-core' {
     /**
      * **`shoupai`** の手牌から **`rongpai`** で和了したときの和了形の一覧を返す。
      * @param shoupai {@link Shoupai | 手牌}
-     * @param rongpai {@link Pai | 牌}
+     * @param rongpai {@link Pai | 牌}。指定されていないの場合に手牌の最後の一枚がツモと見なす。
      * @returns 和了形の配列。和了形にならない場合は空配列を返す。
      */
-    function hule_mianzi(shoupai: Shoupai, rongpai: Pai): Hulexing[];
+    function hule_mianzi(shoupai: Shoupai, rongpai?: Pai | null): Hulexing[];
   }
 }
