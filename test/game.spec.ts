@@ -165,7 +165,7 @@ suite('Majiang.Game', () => {
     const game = new Majiang.Game();
 
     test('speed: 0 → 0ms', (done) => {
-      let called;
+      let called: number;
       game.speed = 0;
       game.delay(() => {
         called = 1;
@@ -177,7 +177,7 @@ suite('Majiang.Game', () => {
       }, 0);
     });
     test('speed: 1 → 500ms', (done) => {
-      let called;
+      let called: number;
       game.speed = 1;
       game.delay(() => {
         called = 1;
@@ -191,7 +191,7 @@ suite('Majiang.Game', () => {
       }, 500);
     });
     test('speed: 3 → 600ms', (done) => {
-      let called;
+      let called: number;
       game.speed = 3;
       game.delay(() => {
         called = 1;
@@ -205,7 +205,7 @@ suite('Majiang.Game', () => {
       }, 600);
     });
     test('speed: 0, timeout: 100 → 0ms', (done) => {
-      let called;
+      let called: number;
       game.speed = 0;
       game.delay(() => {
         called = 1;
@@ -217,7 +217,7 @@ suite('Majiang.Game', () => {
       }, 0);
     });
     test('speed: 5, timeout: 100 → 100ms', (done) => {
-      let called;
+      let called: number;
       game.speed = 5;
       game.delay(() => {
         called = 1;
