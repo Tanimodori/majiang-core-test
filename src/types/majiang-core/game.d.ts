@@ -156,12 +156,12 @@ declare module '@kobalab/majiang-core' {
     /**
      * 第一ツモ巡の間は `true`。
      */
-    _diyizimo: string;
+    _diyizimo: boolean;
 
     /**
      * 四風連打の可能性がある間は `true`。
      */
-    _fengpai: string;
+    _fengpai: boolean;
 
     /**
      * 最後に打牌した{@link Pai | 牌}。次の打牌で上書きする。
