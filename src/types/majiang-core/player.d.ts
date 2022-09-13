@@ -224,5 +224,69 @@ declare module '@kobalab/majiang-core' {
      * @returns 九種九牌流局可能なら `true` を返す。
      */
     allow_pingju(shoupai: Shoupai): boolean;
+
+    /**
+     * **`kaiju`** を確認し空応答する処理を実装する。
+     * @param kaiju {@link KaijuGameMessage}
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_kaiju(kaiju: KaijuGameMessage['kaiju']): void;
+
+    /**
+     * **`qipai`** を確認し空応答する処理を実装する。
+     * @param qipai {@link Qipai} (または {@link QipaiGameMessage})
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_qipai(qipai: QipaiGameMessage['qipai']): void;
+
+    /**
+     * **`zimo`** から適切な応答(打牌・槓・和了・倒牌)を選択し返す処理を実装する。
+     * @param zimo {@link ZimoGameMessage} (または {@link GangzimoGameMessage})
+     * @param gangzimo 真の場合は槓自摸を表す。
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_zimo(zimo: ZimoGameMessage['zimo'] | GangzimoGameMessage['gangzimo'], gangzimo: boolean): void;
+
+    /**
+     * **`dapai`** から適切な応答(副露・和了・倒牌)を選択し返す処理を実装する。
+     * @param dapai {@link DapaiGameMessage}
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_dapai(dapai: DapaiGameMessage['dapai']): void;
+
+    /**
+     * **`fulou`** から適切な応答(打牌)を選択し返す処理を実装する。
+     * @param fulou {@link FulouGameMessage}
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_fulou(fulou: FulouGameMessage['fulou']): void;
+
+    /**
+     * **`gang`** から適切な応答(打牌・槓・和了)を選択し返す処理を実装する。
+     * @param gang {@link GangGameMessage}
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_gang(gang: GangGameMessage['gang']): void;
+
+    /**
+     * **`hule`** を確認し空応答する処理を実装する。
+     * @param hule {@link HuleGameMessage}
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_hule(hule: HuleGameMessage['hule']): void;
+
+    /**
+     * **`pingju`** を確認し空応答する処理を実装する。
+     * @param pingju {@link PingjuGameMessage}
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_pingju(pingju: PingjuGameMessage['pingju']): void;
+
+    /**
+     * **`paipu`** を確認し空応答する処理を実装する。
+     * @param paipu {@link Paipu | 牌譜}
+     * @vitural サブクラスで実装する必要がある。
+     */
+    action_jieju(paipu: Paipu): void;
   }
 }
