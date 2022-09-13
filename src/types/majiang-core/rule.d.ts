@@ -127,7 +127,7 @@ declare module '@kobalab/majiang-core' {
      * * `3`(4局固定)の場合は次の場の第四局にオーラスを延長する。
      * @defaultValue `1`
      */
-    延長戦方式: boolean;
+    延長戦方式: number;
 
     /* リーチ/ドラ関連 */
 
