@@ -24,15 +24,15 @@ declare module '@kobalab/majiang-core' {
     constructor(players: Player[], callback?: JiejuCallback | null, rule?: Rule, title?: string);
 
     /**
-     * {@link Shoupai.get_dapai} を呼び出し、**`rule`** にしたがって **`shoupai`** から打牌可能な牌の一覧を返す。
+     * {@link Shoupai.get_dapai} を呼び出し、 **`rule`** にしたがって **`shoupai`** から打牌可能な牌の一覧を返す。
      * @param rule {@link Rule | ルール}
      * @param shoupai {@link Shoupai | 手牌}
      * @returns 打牌可能な{@link Pai | 牌}の配列
      */
-    static get_dapai(rule: Rule, shoupai: Shoupai): Pai;
+    static get_dapai(rule: Rule, shoupai: Shoupai): Pai[] | null;
 
     /**
-     * {@link Shoupai.get_chi_mianzi} を呼び出し、**`rule`** にしたがって **`shoupai`** から **`p`** でチー可能な面子の一覧を返す。
+     * {@link Shoupai.get_chi_mianzi} を呼び出し、 **`rule`** にしたがって **`shoupai`** から **`p`** でチー可能な面子の一覧を返す。
      * @param rule {@link Rule | ルール}
      * @param shoupai {@link Shoupai | 手牌}
      * @param p {@link Pai | 牌}
@@ -42,7 +42,7 @@ declare module '@kobalab/majiang-core' {
     static get_chi_mianzi(rule: Rule, shoupai: Shoupai, p: Pai, paishu: number): Menzi[];
 
     /**
-     * {@link Shoupai.get_peng_mianzi} を呼び出し、**`rule`** にしたがって **`shoupai`** から **`p`** でポン可能な面子の一覧を返す。
+     * {@link Shoupai.get_peng_mianzi} を呼び出し、 **`rule`** にしたがって **`shoupai`** から **`p`** でポン可能な面子の一覧を返す。
      * @param rule {@link Rule | ルール}
      * @param shoupai {@link Shoupai | 手牌}
      * @param p {@link Pai | 牌}
@@ -52,7 +52,7 @@ declare module '@kobalab/majiang-core' {
     static get_peng_mianzi(rule: Rule, shoupai: Shoupai, p: Pai, paishu: number): Menzi[];
 
     /**
-     * {@link Shoupai.get_gang_mianzi} を呼び出し、**`rule`** にしたがって **`shoupai`** から **`p`** でカン可能な面子の一覧を返す。
+     * {@link Shoupai.get_gang_mianzi} を呼び出し、 **`rule`** にしたがって **`shoupai`** から **`p`** でカン可能な面子の一覧を返す。
      * @param rule {@link Rule | ルール}
      * @param shoupai {@link Shoupai | 手牌}
      * @param p {@link Pai | 牌}。指定された場合は大明槓、`null` の場合は暗槓と加槓が対象になる。
