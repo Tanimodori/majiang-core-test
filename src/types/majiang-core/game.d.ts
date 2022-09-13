@@ -1,4 +1,7 @@
 declare module '@kobalab/majiang-core' {
+  /** 対局終了時に呼ばれた関数 */
+  type JiejuCallback = (paipu: Paipu) => void;
+
   /**
    * 局進行を実現するクラス
    *
@@ -18,7 +21,7 @@ declare module '@kobalab/majiang-core' {
      * @param rule 指定された{@link Rule | ルール}。省略した場合は、`Majiang.rule()` の呼び出しで得られるルールの初期値が採用される。
      * @param title 牌譜に残すタイトル
      */
-    constructor(players: Player[], callback?: (paipu: Paipu) => void, rule?: Rule, title?: string);
+    constructor(players: Player[], callback?: JiejuCallback | null, rule?: Rule, title?: string);
 
     /**
      * {@link Shoupai.get_dapai} を呼び出し、**`rule`** にしたがって **`shoupai`** から打牌可能な牌の一覧を返す。
@@ -108,7 +111,7 @@ declare module '@kobalab/majiang-core' {
      * インスタンス生成時に指定された対局終了時に呼び出す関数。
      * @see {@link Paipu | 牌譜}
      */
-    _callback: (paipu: Paipu) => void;
+    _callback: JiejuCallback;
 
     /**
      * インスタンス生成時に指定された{@link Rule | ルール}
