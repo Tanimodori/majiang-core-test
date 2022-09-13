@@ -1,20 +1,23 @@
 import { suite, test, assert } from 'vitest';
 
-import Majiang from '@kobalab/majiang-core';
+import Majiang, { GameMessage, Rule, JiejuCallback } from '@kobalab/majiang-core';
 
 import DevGame from './dev/game';
 
 import script from './data/script.json';
 
-let MSG = [];
+let MSG: GameMessage[] = [];
 
 class Player {
-  constructor(id, reply = [], delay = 0) {
+  _id: number;
+  _reply: unknown[];
+  _delay: number;
+  constructor(id: number, reply = [], delay = 0) {
     this._id = id;
     this._reply = reply;
     this._delay = delay;
   }
-  action(msg, callback) {
+  action(msg: GameMessage, callback: (reply: unknown) => void) {
     MSG[this._id] = msg;
     if (callback) {
       if (this._delay) setTimeout(() => callback(this._reply.shift()), this._delay);
@@ -24,24 +27,39 @@ class Player {
 }
 
 class View {
-  kaiju(param) {
+  _param: unknown;
+  _say: unknown[] = [];
+  kaiju(param: unknown) {
     this._param = { kaiju: param };
   }
-  redraw(param) {
+  redraw(param: unknown) {
     this._param = { redraw: param };
   }
-  update(param) {
+  update(param: unknown) {
     this._param = { update: param };
   }
-  say(...param) {
+  say(...param: unknown[]) {
     this._say = param;
   }
-  summary(param) {
+  summary(param: unknown) {
     this._param = { summary: param };
   }
 }
 
-function init_game(param = {}) {
+interface InitGameParam {
+  rule?: Rule;
+  callback?: JiejuCallback;
+  qijia?: number | null;
+  lizhibang?: number | null;
+  changbang?: number | null;
+  shoupai?: string[];
+  zimo?: string[];
+  gangzimo?: string[];
+  baopai?: string;
+  defen?: number[];
+}
+
+function init_game(param: InitGameParam = {}) {
   const players = [0, 1, 2, 3].map((id) => new Player(id));
   const rule = param.rule || Majiang.rule();
   const game = new Majiang.Game(players, param.callback, rule);
