@@ -3,10 +3,10 @@
  */
 'use strict';
 
-import Majiang from '@kobalab/majiang-core';
+import Majiang, { GameMessage, Ju, Paipu, Rule } from '@kobalab/majiang-core';
 
-function make_shan(rule, log) {
-  function set_qipai(paistr) {
+function make_shan(rule: Rule, log: Ju) {
+  function set_qipai(paistr: string) {
     for (const suitstr of paistr.match(/[mpsz]\d+/g)) {
       const s = suitstr[0];
       for (const n of suitstr.match(/\d/g)) {
@@ -50,7 +50,7 @@ function make_shan(rule, log) {
   return shan;
 }
 
-function make_reply(l, log) {
+function make_reply(l: number, log: Ju) {
   const reply = [];
 
   for (const data of log) {
@@ -70,16 +70,18 @@ function make_reply(l, log) {
 }
 
 class Player {
+  _reply: GameMessage[];
   constructor() {
     this._reply = [];
   }
-  action(msg, callback) {
+  action(msg, callback?: (reply: GameMessage) => void) {
     if (callback) callback(this._reply.shift());
   }
 }
 
 export default class Game extends Majiang.Game {
-  constructor(script, rule) {
+  _script: Paipu;
+  constructor(script: Paipu, rule: Rule) {
     super(
       [0, 1, 2, 3].map((x) => new Player()),
       null,
