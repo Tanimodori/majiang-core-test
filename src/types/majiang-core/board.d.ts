@@ -2,13 +2,22 @@ declare module '@kobalab/majiang-core' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface Board extends BoardInfo {}
 
+  /**
+   * 開局時の卓情報
+   * @see {@link Paipu} (または {@link KaijuGameMessage.kaiju})
+   */
+  interface BoardKaijuParams {
+    title: string;
+    player: string[];
+    qijia: number;
+  }
   class Board implements BoardInfo {
     /**
      * **`kaiju`** から開局時の卓情報を生成する。
      * **`kaiju`** が指定されない場合は、空の卓情報を生成する。
      * @param kaiju {@link Paipu} (または {@link KaijuGameMessage.kaiju})
      */
-    constructor(kaiju?: Paipu | KaijuGameMessage['kaiju']);
+    constructor(kaiju?: BoardKaijuParams);
 
     /**
      * 成立待ちのリーチ宣言があるとき真。
