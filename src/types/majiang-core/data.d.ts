@@ -144,7 +144,7 @@ declare module '@kobalab/majiang-core' {
    * 配牌情報
    * @see {@link Moda}
    * @example
-   * ``JavaScript
+   * ```JavaScript
    * { qipai: {
    *     zhuangfeng: 0,
    *     jushu:      0,
@@ -157,7 +157,7 @@ declare module '@kobalab/majiang-core' {
    *                   "m67p68s1346789z17",
    *                   "m14689p377s07z346"  ]
    * } }
-   * ``
+   * ```
    */
   interface Qipai {
     qipai: {
