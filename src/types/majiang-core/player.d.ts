@@ -198,7 +198,7 @@ declare module '@kobalab/majiang-core' {
      * @param p {@link Pai | 牌}。指定された場合は大明槓、`null` の場合は暗槓と加槓が対象になる。
      * @returns カン可能な{@link Menzi | 面子}の配列。
      */
-    get_gang_mianzi(shoupai: Shoupai, p: Pai | null): Menzi[];
+    get_gang_mianzi(shoupai: Shoupai, p?: Pai | null): Menzi[];
 
     /**
      * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.allow_lizhi} を呼び出し、
