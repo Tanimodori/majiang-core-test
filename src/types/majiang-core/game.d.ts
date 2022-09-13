@@ -339,10 +339,10 @@ declare module '@kobalab/majiang-core' {
 
     /**
      * 配牌の局進行を行う。
-     * @param shan {@link Shan}
+     * @param shan {@link Shan}。指定されていないの場合ランダムに生成する。
      * @internal
      */
-    qipai(shan: Shan): void;
+    qipai(shan?: Shan): void;
 
     /**
      * ツモの局進行を行う。
