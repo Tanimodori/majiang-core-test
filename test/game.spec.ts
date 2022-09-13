@@ -2,8 +2,7 @@ import { suite, test, assert } from 'vitest';
 
 import Majiang from '@kobalab/majiang-core';
 
-import Game from './dev/game';
-Majiang.Dev = { Game };
+import DevGame from './dev/game';
 
 import script from './data/script.json';
 
@@ -2409,7 +2408,7 @@ suite('Majiang.Game', () => {
   suite('シナリオ通りに局が進むこと', () => {
     for (const paipu of script) {
       test(paipu.title, () => {
-        const game = new Majiang.Dev.Game(
+        const game = new DevGame(
           JSON.parse(JSON.stringify(paipu)),
           Majiang.rule({ 順位点: ['20', '10', '-10', '-20'] }),
         ).do_sync();
