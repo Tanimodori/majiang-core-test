@@ -60,7 +60,13 @@ declare module '@kobalab/majiang-core' {
      * @param n_gang その局に行われた槓の数
      * @returns カン可能な{@link Menzi | 面子}の配列
      */
-    static get_gang_mianzi(rule: Rule, shoupai: Shoupai, p: Pai, paishu: number, n_gang: number): Menzi[];
+    static get_gang_mianzi(
+      rule: Rule,
+      shoupai: Shoupai,
+      p: Pai | null | undefined,
+      paishu: number,
+      n_gang: number,
+    ): Menzi[];
 
     /**
      * **`rule`** にしたがって **`shoupai`** からリーチ可能か判定する。
@@ -71,7 +77,13 @@ declare module '@kobalab/majiang-core' {
      * @param defen 現在の持ち点
      * @returns **`p`** が `null` のときはリーチ可能な打牌の配列。 **`p`** が {@link Pai | 牌} のときは **`p`** を打牌してリーチ可能なら `true` を返す
      */
-    static allow_lizhi(rule: Rule, shoupai: Shoupai, p: Pai | null, paishu: number, defen: number): Pai[] | boolean;
+    static allow_lizhi(
+      rule: Rule,
+      shoupai: Shoupai,
+      p: Pai | null | undefined,
+      paishu: number,
+      defen: number,
+    ): Pai[] | boolean;
 
     /**
      * **`rule`** にしたがって **`shoupai`** で和了可能か判定する。
@@ -486,7 +498,7 @@ declare module '@kobalab/majiang-core' {
      * @returns カン可能な{@link Menzi | 面子}の配列
      * @internal
      */
-    get_gang_mianzi(l: number): Menzi[];
+    get_gang_mianzi(l?: number | null): Menzi[];
 
     /**
      * {@link Game.allow_lizhi} を呼び出し、インスタンス変数 **`_rule`** にしたがってリーチ可能か判定する。
@@ -494,7 +506,7 @@ declare module '@kobalab/majiang-core' {
      * @returns **`p`** が `null` のときはリーチ可能な打牌の配列。 **`p`** が {@link Pai | 牌} のときは **`p`** を打牌してリーチ可能なら `true` を返す
      * @internal
      */
-    allow_lizhi(p: Pai | null): Pai[] | boolean;
+    allow_lizhi(p?: Pai | null): Pai[] | boolean;
 
     /**
      * {@link Game.allow_hule} を呼び出し、インスタンス変数 **`_rule`** にしたがって和了可能か判定する。
