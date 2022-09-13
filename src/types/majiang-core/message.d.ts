@@ -165,7 +165,7 @@ declare module '@kobalab/majiang-core' {
    *     hupai:      [ { name: "立直", fanshu: 1 },
    *                   { name: "門前清自模和", fanshu: 1 },
    *                   { name: "裏ドラ", fanshu: 1 } ],
-   *     fenpai:     [ -2000, 4000, -1000, -1000 ]
+   *     fenpei:     [ -2000, 4000, -1000, -1000 ]
    * } }
    * ```
    *
@@ -180,7 +180,7 @@ declare module '@kobalab/majiang-core' {
    *     damanguan:  2,
    *     defen:      64000,
    *     hupai:      [ { name: "大四喜", fanshu: "**", baojia: 0 } ],
-   *     fenpai:     [ -32000, 0, 64000, -32000 ]
+   *     fenpei:     [ -32000, 0, 64000, -32000 ]
    * } }
    * ```
    * @see {@link Hule}
@@ -198,7 +198,7 @@ declare module '@kobalab/majiang-core' {
    *                   "p2234406z333555",
    *                   "",
    *                   "p11223346777z77" ],
-   *     fenpai:     [ -1500, 1500, -1500, 1500 ]
+   *     fenpei:     [ -1500, 1500, -1500, 1500 ]
    * } }
    * ```
    * @see {@link Pingju}

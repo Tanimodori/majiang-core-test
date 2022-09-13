@@ -456,7 +456,7 @@ suite('Majiang.Player', () => {
           damanguan: 2,
           defen: 64000,
           hupai: [{ name: '大四喜', fanshu: '**', baojia: 0 }],
-          fenpai: [-32000, 0, 64000, -32000],
+          fenpei: [-32000, 0, 64000, -32000],
         },
       };
       player.action(hule, done);
@@ -466,7 +466,7 @@ suite('Majiang.Player', () => {
         pingju: {
           name: '荒牌平局',
           shoupai: ['', 'p2234406z333555', '', 'p11223346777z77'],
-          fenpai: [-1500, 1500, -1500, 1500],
+          fenpei: [-1500, 1500, -1500, 1500],
         },
       };
       player.action(pingju, done);

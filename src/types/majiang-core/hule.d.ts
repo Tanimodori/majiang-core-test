@@ -164,7 +164,7 @@ declare module '@kobalab/majiang-core' {
        * その局の東家から順に並べる。
        * リーチ宣言による1000点減は収支に含めない。
        */
-      fenpai: number[];
+      fenpei: number[];
     }
 
     /**

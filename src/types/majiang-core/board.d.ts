@@ -16,7 +16,7 @@ declare module '@kobalab/majiang-core' {
     _lizhi: boolean;
 
     /**
-     * ダブロンの際に先の和了の {@link Hule.hule | `hule.fenpai`} を次の和了に引き継ぐ。
+     * ダブロンの際に先の和了の {@link Hule.hule | `hule.fenpei`} を次の和了に引き継ぐ。
      */
     _fenpei: boolean;
 
