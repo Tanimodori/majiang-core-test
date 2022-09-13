@@ -428,9 +428,12 @@ declare module '@kobalab/majiang-core' {
      */
     fanshu: string;
     /**
-     * 役満のパオがあった場合の責任者（`-`: 下家、`=`: 対面、`+`: 上家）
+     * 役満のパオがあった場合の責任者
+     * @remarks
+     * テストには`string`で表示することもある（`-`: 下家、`=`: 対面、`+`: 上家）
+     * ヴィキにはどこの**`baojia`**が`string`か`number`か詳しく載っていない
      */
-    baojia?: string;
+    baojia?: number;
   }
 
   /**

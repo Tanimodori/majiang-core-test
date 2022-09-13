@@ -1,7 +1,7 @@
 declare module '@kobalab/majiang-core' {
   /**
    * {@link BoardInfo | 卓情報}を描画するクラス
-   * @remarks このクラスの詳細はヴィキに乗っていない、`game.js`の用例から仮想したインタフェースです。
+   * @remarks このクラスの詳細はヴィキに載っていない、`game.js`の用例から仮想したインタフェースです。
    */
   interface View {
     /**
