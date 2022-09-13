@@ -2,7 +2,7 @@ import { suite, test, assert } from 'vitest';
 
 import Majiang from '@kobalab/majiang-core';
 
-function Shoupai(paistr) {
+function Shoupai(paistr: string) {
   return Majiang.Shoupai.fromString(paistr);
 }
 
