@@ -30,7 +30,7 @@ declare module '@kobalab/majiang-core' {
      * @param paistr {@link Paizi | 牌姿}
      * @returns 生成した{@link Shoupai | 手牌}
      */
-    static fromString(paistr: Paizi): Shoupai;
+    static fromString(paistr?: Paizi): Shoupai;
 
     /**
      * 以下の構成で純手牌の各牌の枚数を示す。添字0は赤牌の枚数。
