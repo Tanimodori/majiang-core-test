@@ -367,7 +367,7 @@ declare module '@kobalab/majiang-core' {
       /**
        * 裏ドラ表示{@link Pai | 牌}の配列。リーチでない場合は `null`。
        */
-      fubaopai: Pai[];
+      fubaopai: Pai[] | null;
       /**
        * 符。役満の場合は `undefined`。
        */
