@@ -209,7 +209,7 @@ declare module '@kobalab/majiang-core' {
      * * **`p`** が{@link Pai | 牌}のときは **`p`** を打牌してリーチ可能なら `true` を返す。
      * @returns リーチ可能なら `true` を返す。
      */
-    allow_lizhi(shoupai: Shoupai, p?: Pai | null): boolean;
+    allow_lizhi(shoupai: Shoupai, p?: Pai | null): Pai[] | boolean;
 
     /**
      * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.allow_hule} を呼び出し、
