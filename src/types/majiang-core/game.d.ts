@@ -99,7 +99,7 @@ declare module '@kobalab/majiang-core' {
     static allow_hule(
       rule: Rule,
       shoupai: Shoupai,
-      p: Pai | null,
+      p: Pai | null | undefined,
       zhuangfeng: number,
       menfeng: number,
       hupai: boolean,
@@ -516,7 +516,7 @@ declare module '@kobalab/majiang-core' {
      * @returns ロン和了可能なら `true` を返す。
      * @internal
      */
-    allow_hule(l: number | null): boolean;
+    allow_hule(l?: number | null): boolean;
 
     /**
      * {@link Game.allow_pingju} を呼び出し、インスタンス変数 **`_rule`** にしたがって現在の手番が九種九牌流局可能か判定する。
