@@ -65,7 +65,7 @@ declare module '@kobalab/majiang-core' {
       shoupai: Shoupai,
       p: Pai | null | undefined,
       paishu: number,
-      n_gang: number,
+      n_gang?: number,
     ): Menzi[];
 
     /**
