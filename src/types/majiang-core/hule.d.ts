@@ -166,13 +166,19 @@ declare module '@kobalab/majiang-core' {
        */
       fenpai: number[];
     }
+
+    /**
+     * 和了の場況情報
+     */
+    type HuleParamInput = Partial<Omit<HuleParam, 'hupai' | 'jicun'> & HuleParam['hupai'] & HuleParam['jicun']>;
+
     /**
      * **`param`** で指定された値を元に {@link Util.hule} の第3パラメータに使用する場況情報を返す。
      * @param param 指定された場況情報
      * @returns 場況情報
      * @see hule
      */
-    function hule_param(param: Partial<HuleParam> = {}): HuleParam;
+    function hule_param(param: HuleParamInput = {}): HuleParam;
 
     /**
      * 和了形
