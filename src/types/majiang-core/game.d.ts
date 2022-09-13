@@ -184,7 +184,7 @@ declare module '@kobalab/majiang-core' {
      * 各対局者が一発可能かを示す配列。
      * 添え字は手番(`0`: 東、`1`: 南、`2`: 西、`3`: 北)。
      */
-    _yifa: number[];
+    _yifa: boolean[];
 
     /**
      * 各対局者が行ったカンの数。
