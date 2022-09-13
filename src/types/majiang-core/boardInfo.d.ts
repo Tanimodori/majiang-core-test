@@ -53,7 +53,7 @@ declare module '@kobalab/majiang-core' {
     /**
      * その局の対局者の手牌を表す {@link Shoupai} のインスタンスの配列。その局の東家から順に並べる。
      */
-    shoupai: Shoupai[];
+    shoupai: string[];
 
     /**
      * その局の対局者の捨て牌を表す {@link He} のインスタンスの配列。その局の東家から順に並べる。
