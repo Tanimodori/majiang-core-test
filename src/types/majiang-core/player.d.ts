@@ -87,7 +87,7 @@ declare module '@kobalab/majiang-core' {
      * @param gangzimo 真の場合は槓自摸を表す。
      * @internal
      */
-    zimo(zimo: ZimoGameMessage['zimo'], gangzimo: boolean): void;
+    zimo(zimo: ZimoGameMessage['zimo'], gangzimo?: boolean): void;
 
     /**
      * **`dapai`** から{@link BoardInfo | 卓情報}を設定し、{@link Player.action_dapai}を呼び出し応答を返す。
@@ -250,7 +250,7 @@ declare module '@kobalab/majiang-core' {
      * @param gangzimo 真の場合は槓自摸を表す。
      * @vitural サブクラスで実装する必要がある。
      */
-    action_zimo(zimo: ZimoGameMessage['zimo'] | GangzimoGameMessage['gangzimo'], gangzimo: boolean): void;
+    action_zimo(zimo: ZimoGameMessage['zimo'] | GangzimoGameMessage['gangzimo'], gangzimo?: boolean): void;
 
     /**
      * **`dapai`** から適切な応答(副露・和了・倒牌)を選択し返す処理を実装する。
