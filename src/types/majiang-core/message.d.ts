@@ -229,11 +229,14 @@ declare module '@kobalab/majiang-core' {
    * 局進行の際に {@link Game} と {@link Player} で通信されるJSON形式のデータ
    */
   type PlayerMessage =
-    | DapaiPlayerMessage //
+    | EmptyPlayerMessage
+    | DapaiPlayerMessage
     | FulouPlayerMessage
     | GangPlayerMessage
     | HulePlayerMessage
     | DaopaiPlayerMessage;
+
+  type EmptyPlayerMessage = Record<string, never>;
 
   /**
    * 打牌応答メッセージ
