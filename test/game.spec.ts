@@ -1,6 +1,6 @@
 import { suite, test, assert } from 'vitest';
 
-import Majiang, { GameMessage, Rule, JiejuCallback } from '@kobalab/majiang-core';
+import Majiang, { GameMessage, PlayerMessage, Rule, JiejuCallback, Game } from '@kobalab/majiang-core';
 
 import DevGame from './dev/game';
 
@@ -10,14 +10,14 @@ let MSG: GameMessage[] = [];
 
 class Player {
   _id: number;
-  _reply: unknown[];
+  _reply: PlayerMessage[];
   _delay: number;
   constructor(id: number, reply = [], delay = 0) {
     this._id = id;
     this._reply = reply;
     this._delay = delay;
   }
-  action(msg: GameMessage, callback: (reply: unknown) => void) {
+  action(msg: GameMessage, callback: (reply: PlayerMessage) => void) {
     MSG[this._id] = msg;
     if (callback) {
       if (this._delay) setTimeout(() => callback(this._reply.shift()), this._delay);
@@ -111,14 +111,14 @@ function init_game(param: InitGameParam = {}) {
   return game;
 }
 
-function set_reply(game, reply) {
+function set_reply(game: Game, reply: PlayerMessage) {
   for (let l = 0; l < 4; l++) {
     const id = game.model.player_id[l];
     game._players[id]._reply = [reply[l]];
   }
 }
 
-function last_paipu(game, i = 0) {
+function last_paipu(game: Game, i = 0) {
   const log = game._paipu.log[game._paipu.log.length - 1];
   return log[log.length - 1 + i];
 }
