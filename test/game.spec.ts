@@ -111,7 +111,7 @@ function init_game(param: InitGameParam = {}) {
   return game;
 }
 
-function set_reply(game: Game, reply: PlayerMessage) {
+function set_reply(game: Game, reply: PlayerMessage[]) {
   for (let l = 0; l < 4; l++) {
     const id = game.model.player_id[l];
     game._players[id]._reply = [reply[l]];
