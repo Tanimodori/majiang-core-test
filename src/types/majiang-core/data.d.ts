@@ -419,18 +419,18 @@ declare module '@kobalab/majiang-core' {
   interface Yiman {
     /**
      * 役名
-     * @remarks  役名は任意の文字列なので、ローカル役の採用も可能。
+     * @remarks 役名は任意の文字列なので、ローカル役の採用も可能。
      */
     name: string;
     /**
      * 翻数
-     * @remarks  役満の場合は数字ではなく、和了役それぞれの役満複合数分の `*` となる
+     * @remarks 役満の場合は数字ではなく、和了役それぞれの役満複合数分の `*` となる
      */
     fanshu: string;
     /**
-     * 役満のパオがあった場合の責任者
+     * 役満のパオがあった場合の責任者（`-`: 下家、`=`: 対面、`+`: 上家）
      */
-    baojia?: number;
+    baojia?: string;
   }
 
   /**
