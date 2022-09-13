@@ -175,11 +175,25 @@ declare module '@kobalab/majiang-core' {
     function hule_param(param: Partial<HuleParam> = {}): HuleParam;
 
     /**
+     * 和了形
+     * @example
+     * ```javascript
+     * // 一般手
+     * ['z22_!', 'm123', 'p555', 's789', 'z111']
+     * // 七対子形
+     * ['m22', 'm55-!', 'p44', 'p66', 's11', 's99', 'z33']
+     * ```
+     * // 国士無双形
+     * ['z77', 'm1_!', 'm9', 'p1', 'p9', 's1', 's9', 'z1', 'z2', 'z3', 'z4', 'z5', 'z6']
+     */
+    type Hulexing = Menzi[];
+
+    /**
      * **`shoupai`** の手牌から **`rongpai`** で和了したときの和了形の一覧を返す。
      * @param shoupai {@link Shoupai | 手牌}
      * @param rongpai {@link Pai | 牌}
      * @returns 和了形の配列。和了形にならない場合は空配列を返す。
      */
-    function hule_mianzi(shoupai: Shoupai, rongpai: Pai): Paizi[];
+    function hule_mianzi(shoupai: Shoupai, rongpai: Pai): Hulexing[];
   }
 }
