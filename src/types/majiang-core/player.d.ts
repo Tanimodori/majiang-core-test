@@ -153,5 +153,76 @@ declare module '@kobalab/majiang-core' {
      * @internal
      */
     get shan(): Shan;
+
+    /**
+     * 自身の手牌がテンパイしている場合、和了牌の一覧を返す。
+     * @returns 和了{@link Pai | 牌}の配列。テンパイしていない場合は空の配列を返す。
+     */
+    get hulepai(): Pai[];
+
+    /**
+     * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.get_dapai} を呼び出し、
+     * **`shoupai`** が打牌可能な牌の一覧を返す。
+     * @param shoupai {@link Shoupai}
+     * @returns 打牌可能な{@link Pai | 牌}の配列。
+     */
+    get_dapai(shoupai: Shoupai): Pai[];
+
+    /**
+     * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.get_chi_mianzi} を呼び出し、
+     * **`shoupai`** が **`p`** でチー可能な面子の一覧を返す。
+     * @param shoupai {@link Shoupai}
+     * @param p {@link Pai | 牌}
+     * @returns チー可能な{@link Menzi | 面子}の配列。
+     */
+    get_chi_mianzi(shoupai: Shoupai, p: Pai): Menzi[];
+
+    /**
+     * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.get_peng_mianzi} を呼び出し、
+     * **`shoupai`** が **`p`** でポン可能な面子の一覧を返す。
+     * @param shoupai {@link Shoupai}
+     * @param p {@link Pai | 牌}
+     * @returns ポン可能な{@link Menzi | 面子}の配列。
+     */
+    get_peng_mianzi(shoupai: Shoupai, p: Pai): Menzi[];
+
+    /**
+     * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.get_gang_mianzi} を呼び出し、
+     * **`shoupai`** がカン可能な面子の一覧を返す。
+     * @param shoupai {@link Shoupai}
+     * @param p {@link Pai | 牌}。指定された場合は大明槓、`null` の場合は暗槓と加槓が対象になる。
+     * @returns カン可能な{@link Menzi | 面子}の配列。
+     */
+    get_gang_mianzi(shoupai: Shoupai, p: Pai | null): Menzi[];
+
+    /**
+     * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.allow_lizhi} を呼び出し、
+     * **`shoupai`** からリーチ可能か判定する。
+     * @param shoupai {@link Shoupai}
+     * @param p
+     * * **`p`** が `null` のときはリーチ可能な打牌一覧を返す。
+     * * **`p`** が{@link Pai | 牌}のときは **`p`** を打牌してリーチ可能なら `true` を返す。
+     * @returns リーチ可能なら `true` を返す。
+     */
+    allow_lizhi(shoupai: Shoupai, p: Pai): boolean;
+
+    /**
+     * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.allow_hule} を呼び出し、
+     * **`shoupai`** から和了可能か判定する。
+     * @param shoupai {@link Shoupai}
+     * @param p
+     * * **`p`** が `null` のときはツモ和了可能なら `true` を返す。
+     * * **`p`** が{@link Pai | 牌}のときは **`p`** でロン和了可能なら `true` を返す。
+     * @returns 和了可能なら `true` を返す。
+     */
+    allow_hule(shoupai: Shoupai, p: Pai): boolean;
+
+    /**
+     * {@link Rule | ルール} と {@link BoardInfo | 卓情報} を使用して {@link Game.allow_pingju} を呼び出し、
+     * **`shoupai`** で九種九牌流局可能か判定する。
+     * @param shoupai {@link Shoupai}
+     * @returns 九種九牌流局可能なら `true` を返す。
+     */
+    allow_pingju(shoupai: Shoupai): boolean;
   }
 }
