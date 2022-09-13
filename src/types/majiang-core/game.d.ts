@@ -335,7 +335,7 @@ declare module '@kobalab/majiang-core' {
      * **`timeout`** の指定がない場合は、インスタンス変数 **`_speed`** に応じて待ち時間を決定する。
      * @internal
      */
-    call_players(type: string, msg: GameMessage, timeout?: number): void;
+    call_players(type: string, msg: GameMessage[], timeout?: number): void;
 
     /**
      * 配牌の局進行を行う。
