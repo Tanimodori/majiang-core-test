@@ -154,7 +154,7 @@ declare module '@kobalab/majiang-core' {
        * 複合には四暗刻をダブル役満にする類のものと、大三元と字一色の複合のような役の複合のケースがある。
        * 役満でない場合は `undefined`。
        */
-      damanguan?: number;
+      damanguan?: number | null;
       /**
        * 和了打点。供託収入は含まない。
        */
