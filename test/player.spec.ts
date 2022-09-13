@@ -1,8 +1,14 @@
 import { suite, test, assert } from 'vitest';
 
-import Majiang from '@kobalab/majiang-core';
+import Majiang, { Rule } from '@kobalab/majiang-core';
 
-function init_player(param = {}) {
+interface InitPlayerParam {
+  rule?: Rule;
+  jushu?: number;
+  shoupai?: string;
+}
+
+function init_player(param: InitPlayerParam = {}) {
   const player = new Majiang.Player();
 
   const kaiju = { id: 1, rule: Majiang.rule(), title: 'タイトル', player: ['私', '下家', '対面', '上家'], qijia: 1 };
