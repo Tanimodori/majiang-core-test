@@ -125,7 +125,7 @@ declare module '@kobalab/majiang-core' {
      * @remarks
      * {@link Game} からは適切なタイミングでメソッドを呼び出して描画のきっかけを与える。
      */
-    _view: unknown;
+    _view: View;
 
     /**
      * {@link Paipu | 牌譜}
@@ -257,7 +257,7 @@ declare module '@kobalab/majiang-core' {
      * 非同期モードで対局を開始する。
      * @param qijia 起家を指定すること(`0`〜`3`)。指定しない場合はランダムに起家を決定する。
      */
-    kaiju(qijia: number): void;
+    kaiju(qijia?: number): void;
 
     /**
      * 対局者が応答の際に呼び出す。
@@ -291,7 +291,7 @@ declare module '@kobalab/majiang-core' {
     /**
      * インスタンス変数 **`_view`** に **`view`** を設定する。
      */
-    set view(view: unknown);
+    set view(view: View);
 
     /**
      * インスタンス変数 **`_speed`** を返す。

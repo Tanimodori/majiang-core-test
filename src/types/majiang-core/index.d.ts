@@ -11,3 +11,4 @@
 /// <reference path="boardinfo.d.ts" />
 /// <reference path="board.d.ts" />
 /// <reference path="player.d.ts" />
+/// <reference path="view.d.ts" />
