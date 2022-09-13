@@ -392,10 +392,10 @@ declare module '@kobalab/majiang-core' {
     /**
      * 流局の局進行を行う。
      * @param name 指定された場合は途中流局とする。
-     * @param shoupai 流局時に公開した {@link Paizi | 牌姿} を指定する。
+     * @param shoupai 流局時に公開した {@link Paizi | 牌姿} を指定する。指定されていないの場合は全員ノーテンの扱る。
      * @internal
      */
-    pingju(name: string, shoupai: Paizi[]): void;
+    pingju(name: string, shoupai?: Paizi[]): void;
 
     /**
      * 対局終了の判断を行う。
