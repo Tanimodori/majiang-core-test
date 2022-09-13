@@ -1,8 +1,8 @@
 import { suite, test, assert } from 'vitest';
 
-import Majiang from '@kobalab/majiang-core';
+import Majiang, { Rule } from '@kobalab/majiang-core';
 
-function Shan(rule) {
+function Shan(rule?: Partial<Rule>) {
   return new Majiang.Shan(Majiang.rule(rule));
 }
 
