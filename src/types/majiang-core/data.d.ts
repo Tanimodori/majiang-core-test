@@ -128,7 +128,7 @@ declare module '@kobalab/majiang-core' {
   /**
    * 模打情報
    */
-  type Moda = Array<
+  type Moda =
     | Qipai // 配牌情報
     | Zimo // 自摸情報
     | Dapai // 打牌情報
@@ -137,8 +137,7 @@ declare module '@kobalab/majiang-core' {
     | Gangzimo // 槓自摸情報
     | Kaigang // 開槓情報
     | Hule // 和了情報
-    | Pingju // 流局情報
-  >;
+    | Pingju; // 流局情報
 
   /**
    * 配牌情報
