@@ -323,7 +323,7 @@ declare module '@kobalab/majiang-core' {
      * @param msg {@link GameMessage | メッセージ}
      * @internal
      */
-    notify_players(type: string, msg: GameMessage): void;
+    notify_players(type: string, msg: GameMessage[]): void;
 
     /**
      * 対局者に **`msg`** を通知する。
