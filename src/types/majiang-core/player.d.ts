@@ -143,7 +143,7 @@ declare module '@kobalab/majiang-core' {
      * @returns 自身の{@link Shoupai | 手牌}
      * @internal
      */
-    get shoupai(): Shoupai;
+    get shoupai(): string;
 
     /**
      * 自身の捨て牌を返す。
