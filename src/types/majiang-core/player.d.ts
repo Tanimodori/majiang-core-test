@@ -1,5 +1,10 @@
 declare module '@kobalab/majiang-core' {
   /**
+   * 対応呼び出し関数
+   */
+  type ReplyCallback = (reply?: PlayerMessage) => void;
+
+  /**
    * 対局者を実現する基底クラス
    * 唯一のメソッド {@link Player.action} の非同期呼び出しで受信した {@link GameMessage} に対して行動を決定し、 {@link PlayerMessage} を応答する。
    * 本クラスは抽象クラスであり、{@link Player.action} から各メッセージに対応するメソッドを呼び出すが、そのメソッドは [[卓情報]] を更新するのみの実装である。卓情報から具体的な行動を決定し、応答を返す処理はサブクラスで実装する必要がある。
@@ -15,7 +20,7 @@ declare module '@kobalab/majiang-core' {
      * @param msg {@link GameMessage}
      * @param callback 呼び出し関数
      */
-    action(msg: GameMessage, callback: (reply: PlayerMessage) => void): void;
+    action(msg: GameMessage, callback: ReplyCallback): void;
 
     /**
      * {@link KaijuGameMessage} で通知された自身の席順(`0`: 仮東、`1`: 仮南、`2`: 仮西、`3`: 仮北)。
@@ -25,7 +30,7 @@ declare module '@kobalab/majiang-core' {
     /**
      * {@link Player.action} 呼び出し時に指定された応答送信用関数。
      */
-    _callback: (reply: PlayerMessage) => void;
+    _callback: ReplyCallback;
 
     /**
      * {@link KaijuGameMessage} で通知された対局の{@link Rule | ルール}
