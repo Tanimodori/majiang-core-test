@@ -363,11 +363,11 @@ declare module '@kobalab/majiang-core' {
       /**
        * 放銃者。ツモ和了の場合は `null`。
        */
-      baojia: number | null;
+      baojia?: number | null;
       /**
        * 裏ドラ表示{@link Pai | 牌}の配列。リーチでない場合は `null`。
        */
-      fubaopai: Pai[] | null;
+      fubaopai?: Pai[] | null;
       /**
        * 符。役満の場合は `undefined`。
        */
