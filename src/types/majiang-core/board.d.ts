@@ -94,8 +94,9 @@ declare module '@kobalab/majiang-core' {
     /**
      * **`pingju`** を卓情報に反映する。
      * @param pingju {@link Pingju} (または {@link PingjuGameMessage})
+     * @remarks **`defen`**は使われていない。
      */
-    pingju(pingju: Pingju['pingju'] | PingjuGameMessage['pingju']): void;
+    pingju(pingju: Pick<Pingju['pingju'], 'name' | 'shoupai'>): void;
 
     /**
      * 成立待ちのリーチ宣言を成立させる。
