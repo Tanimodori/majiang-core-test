@@ -139,8 +139,11 @@ declare module '@kobalab/majiang-core' {
        * 和了役の配列。それぞれの要素には役名を示す **`name`** と翻数を示す **`fanshu`** がある。
        * 役満の場合 **`fanshu`** は数字ではなく、和了役それぞれの役満複合数分の `*` となる。
        * また役満のパオがあった場合は **`baojia`** に責任者を設定する。
+       *
+       * ここには{@link Paipu | 牌譜}や{@link HuleGameMessage}での`number`ではなく、
+       * `string`で表示する（`-`: 下家、`=`: 対面、`+`: 上家）。
        */
-      hupai: Huleyi[];
+      hupai: Huleyi<string>[];
       /**
        * 符。役満の場合は `undefined`。
        */

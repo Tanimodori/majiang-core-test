@@ -399,7 +399,7 @@ declare module '@kobalab/majiang-core' {
   }
 
   /** 和了役 */
-  type Huleyi = Yibanyi | Yiman;
+  type Huleyi<B = number> = Yibanyi | Yiman<B>;
 
   /**
    * 一般役
@@ -417,8 +417,9 @@ declare module '@kobalab/majiang-core' {
 
   /**
    * 役満
+   * @template B **`baojia`** の型
    */
-  interface Yiman {
+  interface Yiman<B = number> {
     /**
      * 役名
      * @remarks 役名は任意の文字列なので、ローカル役の採用も可能。
@@ -432,10 +433,10 @@ declare module '@kobalab/majiang-core' {
     /**
      * 役満のパオがあった場合の責任者
      * @remarks
-     * テストには`string`で表示することもある（`-`: 下家、`=`: 対面、`+`: 上家）
-     * ヴィキにはどこの**`baojia`**が`string`か`number`か詳しく載っていない
+     * {@link Paipu | 牌譜}や{@link HuleGameMessage}には`number`が、
+     * {@link Util.hule}には`string`で表示する（`-`: 下家、`=`: 対面、`+`: 上家）。
      */
-    baojia?: number;
+    baojia?: B;
   }
 
   /**
